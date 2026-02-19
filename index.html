@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saar — UX Researcher & Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  /* Clean, muted palette */
+  --bg:       #0b0c10;
+  --bg2:      #0f1118;
+  --bg3:      #121521;
+  --card:     rgba(18,21,33,0.78);
+  --card2:    rgba(22,26,40,0.76);
+  --border:   rgba(255,255,255,0.08);
+  --border2:  rgba(160,176,196,0.28);
+  --text:     rgba(244,245,247,0.92);
+  --muted:    rgba(244,245,247,0.62);
+  --muted2:   rgba(244,245,247,0.42);
+  --accent:   #a0b0c4;         /* muted blue-gray */
+  --accent2:  #c3ccd6;         /* soft highlight */
+  --accent-dim: rgba(160,176,196,0.14);
+
+  --serif:    'Cormorant Garamond', serif;
+  --body:     'Instrument Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --mono:     'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+::selection { background: var(--accent); color: var(--bg); }
+#neuro-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 56px;
+  background: rgba(11,15,26,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: var(--serif); font-size: 18px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); text-decoration: none; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 56px 80px; position: relative; z-index: 1;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 64px; align-items: center; width: 100%; max-width: 1200px;
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+  opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+}
+.hero-title {
+  font-family: var(--serif); font-size: clamp(52px, 7vw, 96px);
+  font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; color: var(--text);
+  margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+}
+.hero-title .cyan { color: var(--accent); }
+.hero-sub {
+  font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 480px;
+  margin-bottom: 36px; opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+}
+.hero-sub a { color: var(--accent); text-decoration: none; }
+.hero-cta { display: flex; gap: 14px; align-items: center; opacity: 0; animation: fadeUp 0.6s 0.45s forwards; }
+.btn-primary {
+  background: var(--accent); color: var(--bg); border: none;
+  padding: 13px 28px; border-radius: 100px; font-family: var(--body);
+  font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
+}
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-secondary {
+  background: transparent; color: var(--text); border: 1px solid var(--border);
+  padding: 13px 28px; border-radius: 100px; font-family: var(--body);
+  font-size: 14px; cursor: pointer; text-decoration: none; transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.hero-social { display: flex; gap: 18px; margin-top: 28px; opacity: 0; animation: fadeUp 0.6s 0.54s forwards; }
+.hero-social a { color: var(--muted2); text-decoration: none; transition: color 0.2s; }
+.hero-social a:hover { color: var(--accent); }
+
+/* SPEC CARD */
+.spec-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 28px;
+  opacity: 0; animation: fadeUp 0.6s 0.38s forwards;
+}
+.spec-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.spec-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+.spec-tag {
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--text); font-size: 13px; padding: 7px 15px;
+  border-radius: 100px; transition: all 0.2s; cursor: default;
+}
+.spec-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+/* SECTIONS */
+.section { position: relative; z-index: 1; padding: 90px 56px; }
+.section-header { margin-bottom: 48px; }
+.section-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
+.section-title { font-family: var(--serif); font-size: clamp(30px, 4vw, 48px); font-weight: 700; color: var(--text); line-height: 1.15; }
+
+/* CARDS */
+.cards-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1100px; margin: 0 auto; }
+.cards-2col  { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 32px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.project-card {
+  background: linear-gradient(180deg, rgba(18,21,33,0.82) 0%, rgba(16,18,26,0.78) 100%);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 26px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: row;
+  gap: 34px;
+  padding: 22px;
+  align-items: center;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+.project-card:hover { border-color: rgba(195,204,214,0.32); transform: translateY(-3px); box-shadow: 0 26px 80px rgba(0,0,0,0.35); }
+.card-img {
+  width: 44%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+  border-radius: 22px;
+  filter: brightness(0.92) saturate(0.92);
+  transition: filter 0.25s, transform 0.25s;
+  box-shadow: 0 22px 70px rgba(0,0,0,0.38);
+}
+.project-card:hover .card-img { filter: brightness(1) saturate(0.98); transform: translateY(-1px); }
+.card-img-placeholder { width: 100%; height: 210px; display: flex; align-items: center; justify-content: center; font-size: 48px; background: var(--bg3); }
+.card-body { padding: 0; flex: 1; display: flex; flex-direction: column; }
+.card-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; opacity: 0.9; }
+.card-company { font-size: 12px; color: var(--muted); margin-bottom: 9px; }
+.card-title { font-family: var(--serif); font-size: 42px; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.08; letter-spacing: -0.01em; }
+.card-desc { font-size: 15px; color: rgba(244,245,247,0.64); line-height: 1.8; max-width: 640px; }
+.card-footer { display: flex; justify-content: flex-start; margin-top: 18px; padding-top: 0; border-top: none; }
+.view-btn {
+  background: rgba(160,176,196,0.12);
+  color: rgba(244,245,247,0.88);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 1;
+  transform: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.project-card:hover .view-btn { border-color: rgba(195,204,214,0.30); background: rgba(160,176,196,0.16); }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.about-body { font-size: 15px; color: rgba(232,237,245,0.72); line-height: 1.9; }
+.about-body p { margin-bottom: 16px; }
+.about-hl { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.about-hl-item { display: flex; gap: 10px; font-size: 14px; }
+.hl-key { color: var(--accent); font-weight: 500; }
+.hl-val { color: var(--muted); }
+.skills-stack { display: flex; flex-direction: column; gap: 16px; }
+.skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; }
+.skill-card-title { font-family: var(--serif); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.skill-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.skill-card li { font-size: 13px; color: var(--muted); display: flex; gap: 8px; }
+.skill-card li::before { content: '·'; color: var(--accent); font-size: 16px; line-height: 1; }
+
+/* CONTACT */
+.contact-section { position: relative; z-index: 1; padding: 90px 56px; border-top: 1px solid var(--border); }
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.contact-title { font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 800; line-height: 1.1; color: var(--text); margin-bottom: 14px; }
+.contact-title .cyan { color: var(--accent); }
+.contact-sub { font-size: 15px; color: var(--muted); line-height: 1.8; }
+.contact-links { display: flex; flex-direction: column; }
+.contact-link {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+  text-decoration: none; color: var(--text); transition: all 0.2s;
+}
+.contact-link:first-child { border-top: 1px solid var(--border); }
+.contact-link:hover { color: var(--accent); }
+.contact-link:hover .cl-arrow { transform: translate(3px,-3px); color: var(--accent); }
+.cl-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); width: 72px; flex-shrink: 0; }
+.cl-value { font-size: 14px; flex: 1; }
+.cl-arrow { font-size: 16px; color: var(--muted2); transition: all 0.2s; }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 0 56px; position: relative; z-index: 1; }
+
+/* FOOTER */
+footer { position: relative; z-index: 1; padding: 26px 56px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
+footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s, transform 0.65s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; } .nav-links { display: none; }
+  .hero, .section, .contact-section { padding-left: 24px; padding-right: 24px; }
+  .hero { padding-top: 100px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+  .cards-grid, .cards-2col { grid-template-columns: 1fr; }
+  .project-card { flex-direction: column; padding: 18px; gap: 18px; align-items: stretch; }
+  .card-img { width: 100%; height: 220px; border-radius: 18px; }
+  .card-title { font-size: 26px; }
+
+  .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .divider { margin: 0 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; }
+}
+
+/* PRIVATE CASE BADGE */
+.project-card.private { cursor: not-allowed; }
+.project-card.private .view-btn { display: none; }
+.private-badge {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244,245,247,0.78);
+  background: rgba(0,0,0,0.28);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 8px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.project-card.private:hover .private-badge { opacity: 1; transform: translateY(0); }
+
+</style>
+</head>
+<body>
+
+<canvas id="neuro-bg"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">SAAR</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Researcher * Designer * Founder</p>
+      <h1 class="hero-title">Hello, I’m <span class="cyan">Saar</span>.</h1>
+      <p class="hero-sub">
+        I’m a UX researcher and designer and founder specializing in cutting-edge experiences for neurotech, AI, and spatial computing.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Let's chat →</a>
+        <a href="#research" class="btn-secondary">View Work</a>
+      </div>
+      <div class="hero-social">
+        <a href="#" title="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="#" title="LinkedIn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:hello@portfolio.com" title="Email">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="spec-card">
+      <p class="spec-label">Specializations</p>
+      <div class="spec-tags">
+        <span class="spec-tag">Neurotech</span>
+        <span class="spec-tag">Neuroscience</span>
+        <span class="spec-tag">AR & Spatial</span>
+        <span class="spec-tag">AI Systems</span>
+        <span class="spec-tag">UX Research</span>
+        <span class="spec-tag">0→1 Design</span>
+        <span class="spec-tag">Fashion E-Commerce</span>
+        <span class="spec-tag">Brand Systems</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESEARCH -->
+<section class="section" id="research">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Research Work</span>
+    <h2 class="section-title">UX Research & User Insights</h2>
+  </div>
+
+  <div class="cards-grid">
+    <a class="project-card reveal private" href="#" aria-label="Meta (Private case study)" onclick="return false;">
+      <img class="card-img" src="assets/meta-wristband.jpg" alt="EMG" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🧠</div>
+      <div class="card-body">
+        <div class="private-badge">Private case study</div>
+        <div class="card-tag">Usability Testing & Focus Groups</div>
+        <div class="card-company">Meta Reality Labs — Neural Interfaces</div>
+        <div class="card-title">EMG Wearables Research</div>
+        <div class="card-desc">UX research on EMG-based wearable systems for next-gen HCI. Led focus groups, tested model-training games, improved signal quality. Contributed to a Nature publication.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+    <a class="project-card reveal" href="sightful.html">
+      <img class="card-img" src="assets/sightful-spacetop.webp" alt="AR" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🥽</div>
+      <div class="card-body">
+        <div class="card-tag">Mixed-Method UX Research</div>
+        <div class="card-company">Sightful — Augmented Reality OS</div>
+        <div class="card-title">Spatial Computing & AR Laptop Research</div>
+        <div class="card-desc">Led U.S. UX research for an AR laptop. Established NYC UXR lab, defined spatial interaction patterns adopted into the roadmap, validated enterprise use cases.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+    <a class="project-card reveal" href="case-sages.html">
+      <img class="card-img" src="assets/sages-cover.png" alt="AI" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🤖</div>
+      <div class="card-body">
+        <div class="card-tag">User Interviews & Surveys</div>
+        <div class="card-company">Sages — AI Platform</div>
+        <div class="card-title">AI Behavior & Self-Improvement Research</div>
+        <div class="card-desc">Large-scale mixed-method research exploring AI use cases, comfort with data sharing, and trust thresholds in AI companions. Defined cognitive frameworks shaping MVP direction.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cards-2col">
+    <a class="project-card reveal" href="case-studio.html">
+      <img class="card-img" src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&q=80&auto=format&fit=crop" alt="Studio" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">⚗️</div>
+      <div class="card-body">
+        <div class="card-tag">Prototyping & Testing</div>
+        <div class="card-company">Sages — Product Studio Lead</div>
+        <div class="card-title">Studio Research & Early Feature Testing</div>
+        <div class="card-desc">Operationalized internal Studio initiatives — turning product hypotheses into structured experiments. Accelerated 0→1 feature validation and reduced engineering ambiguity.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+    <a class="project-card reveal" href="case-platform.html">
+      <img class="card-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&auto=format&fit=crop" alt="Platform" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🏗️</div>
+      <div class="card-body">
+        <div class="card-tag">Strategy & Architecture</div>
+        <div class="card-company">Sages — Experience Strategy</div>
+        <div class="card-title">Platform Architecture Evaluation</div>
+        <div class="card-desc">Evaluated native app, browser extension, and web ecosystem architectures across trust, onboarding friction, and scalability — materially impacting platform direction.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DESIGN -->
+<section class="section" id="design">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Design Work</span>
+    <h2 class="section-title">Product, Brand & Interface</h2>
+  </div>
+
+  <div class="cards-grid">
+    <a class="project-card reveal" href="case-sages-product.html">
+      <img class="card-img" src="assets/sages-cover.png" alt="Sages" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">✦</div>
+      <div class="card-body">
+        <div class="card-tag">0 → 1 Product Design</div>
+        <div class="card-company">Sages</div>
+        <div class="card-title">Sages Core Product Experience</div>
+        <div class="card-desc">Built the foundational interface from sketches to high-fidelity Figma — system architecture translated into interface, serving fundraising, strategy, and MVP engineering.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+    <a class="project-card reveal" href="case-cornerstone.html">
+      <img class="card-img" src="assets/cornerstone-cover.png" alt="Cornerstone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🗂️</div>
+      <div class="card-body">
+        <div class="card-tag">0 → 1 Internal Platform</div>
+        <div class="card-company">Sages</div>
+        <div class="card-title">Cornerstone — Internal Research Tool</div>
+        <div class="card-desc">Designed a modular research infrastructure platform — scalable UI system and interaction logic bridging research operations and product experimentation.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+    <a class="project-card reveal" href="case-neuronYC.html">
+      <img class="card-img" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80&auto=format&fit=crop" alt="NeuroNYC" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🏙️</div>
+      <div class="card-body">
+        <div class="card-tag">Brand & Identity</div>
+        <div class="card-company">Founder & Chair</div>
+        <div class="card-title">NeuroNYC — Brand & Website</div>
+        <div class="card-desc">Designed the complete brand system for a NYC neurotech innovation community — logo, color architecture, website, event materials, and digital communications.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+  </div>
+
+  <div class="cards-2col">
+    <a class="project-card reveal" href="case-galit.html">
+      <img class="card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&auto=format&fit=crop" alt="Galit" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">👗</div>
+      <div class="card-body">
+        <div class="card-tag">E-Commerce · Luxury</div>
+        <div class="card-company">Galit Levi</div>
+        <div class="card-title">Galit Levi — E-Commerce Experience</div>
+        <div class="card-desc">Designed and implemented a couture fashion e-commerce presence on Shopify & Squarespace with custom JS/Python integrations. Luxury aesthetic meets conversion clarity.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+    <a class="project-card reveal" href="case-neuronet.html">
+      <img class="card-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&auto=format&fit=crop" alt="NeuroNet" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🕸️</div>
+      <div class="card-body">
+        <div class="card-tag">React · Side Project</div>
+        <div class="card-company">Personal</div>
+        <div class="card-title">NeuroNet — Web App</div>
+        <div class="card-desc">Built a React-based web app exploring neural network visualization — making complex computational systems tangible and visually interactive.</div>
+        <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">About</span>
+    <h2 class="section-title">Background & Experience</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>I work at the intersection of neuroscience, AI systems, and product experience. My background spans UX research, 0→1 product design, and spatial computing.</p>
+      <p>I'm a Product Experience Lead at Sages (AI platform) and Co-Founder of NeuroNYC, with experience at Meta Reality Labs and Sightful. I hold a double B.A. in Computer Science and Neuroscience from Columbia University (Magna Cum Laude).</p>
+      <p>I divide my work into:</p>
+      <div class="about-hl">
+        <div class="about-hl-item"><span class="hl-key">Research</span><span class="hl-val">— understanding human behavior, emerging interfaces, and system-level usability</span></div>
+        <div class="about-hl-item"><span class="hl-key">Design</span><span class="hl-val">— shaping product architecture, interfaces, and brand systems from concept to launch</span></div>
+      </div>
+    </div>
+    <div class="skills-stack reveal">
+      <div class="skill-card">
+        <div class="skill-card-title">Development</div>
+        <ul>
+          <li>Shopify (themes, storefronts, product flows)</li>
+          <li>Squarespace (new builds & redesigns)</li>
+          <li>E-commerce structure & optimization</li>
+          <li>HTML/CSS, Python, React</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Design</div>
+        <ul>
+          <li>Product & UX design</li>
+          <li>Figma prototyping (low → high fidelity)</li>
+          <li>Brand & logo design</li>
+          <li>Product imagery, store-ready visuals</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Research</div>
+        <ul>
+          <li>Research planning & study design</li>
+          <li>Moderated user interviews</li>
+          <li>Usability testing</li>
+          <li>Dovetail analysis & synthesis</li>
+          <li>Insight reports & evidence-based recommendations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <h2 class="contact-title">Let's work<br><span class="cyan">together.</span></h2>
+      <p class="contact-sub">Open to research collaborations, product design roles, and neurotech / AI projects.</p>
+    </div>
+    <div class="contact-links reveal">
+      <a class="contact-link" href="mailto:hello@portfolio.com"><span class="cl-label">Email</span><span class="cl-value">hello@portfolio.com</span><span class="cl-arrow">↗</span></a>
+      <a class="contact-link" href="#"><span class="cl-label">LinkedIn</span><span class="cl-value">View Profile</span><span class="cl-arrow">↗</span></a>
+      <a class="contact-link" href="#"><span class="cl-label">Resume</span><span class="cl-value">Download PDF</span><span class="cl-arrow">↗</span></a>
+      <a class="contact-link" href="#"><span class="cl-label">GitHub</span><span class="cl-value">View Projects</span><span class="cl-arrow">↗</span></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 — Saar</span>
+  <span>UX Research · Design · Neurotech</span>
+</footer>
+
+<script>
+/* ── NEURON BACKGROUND ── */
+(function() {
+  // Clean floating dots + subtle network connections
+  var canvas = document.getElementById('neuro-bg');
+  var ctx = canvas.getContext('2d', { alpha: true });
+
+  var W = 0, H = 0, DPR = 1;
+  var nodes = [];
+  var mouse = { x: -9999, y: -9999 };
+
+  function rnd(a, b) { return Math.random() * (b - a) + a; }
+
+  function resize() {
+    DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    build();
+  }
+
+  function build() {
+    nodes = [];
+    var density = Math.min(90, Math.max(38, Math.floor((W * H) / 22000)));
+    for (var i = 0; i < density; i++) {
+      nodes.push({
+        x: rnd(0, W),
+        y: rnd(0, H),
+        vx: rnd(-0.18, 0.18),
+        vy: rnd(-0.12, 0.12),
+        r: rnd(1.1, 2.4),
+        a: rnd(0.12, 0.35)
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // background wash (super subtle)
+    var g = ctx.createRadialGradient(W * 0.6, H * 0.2, 0, W * 0.6, H * 0.2, Math.max(W, H));
+    g.addColorStop(0, 'rgba(160,176,196,0.05)');
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    // connections
+    var maxD = 185;
+    for (var i = 0; i < nodes.length; i++) {
+      var ni = nodes[i];
+      for (var j = i + 1; j < nodes.length; j++) {
+        var nj = nodes[j];
+        var dx = ni.x - nj.x;
+        var dy = ni.y - nj.y;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d < maxD) {
+          var t = 1 - d / maxD;
+          var alpha = 0.18 * t * Math.min(ni.a + nj.a, 0.75);
+          ctx.strokeStyle = 'rgba(160,176,196,' + alpha.toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(ni.x, ni.y);
+          ctx.lineTo(nj.x, nj.y);
+          ctx.stroke();
+        }
+      }
+
+      // gentle interaction near mouse
+      var mdx = ni.x - mouse.x;
+      var mdy = ni.y - mouse.y;
+      var md = Math.sqrt(mdx * mdx + mdy * mdy);
+      if (md < 140) {
+        ni.vx += (mdx / (md + 0.001)) * 0.0008;
+        ni.vy += (mdy / (md + 0.001)) * 0.0008;
+      }
+    }
+
+    // dots
+    for (var k = 0; k < nodes.length; k++) {
+      var n = nodes[k];
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(244,245,247,' + (n.a * 0.82).toFixed(3) + ')';
+      ctx.fill();
+
+      // drift
+      n.x += n.vx;
+      n.y += n.vy;
+      // soft wrap
+      if (n.x < -20) n.x = W + 20;
+      if (n.x > W + 20) n.x = -20;
+      if (n.y < -20) n.y = H + 20;
+      if (n.y > H + 20) n.y = -20;
+      // dampen so it stays calm
+      n.vx *= 0.996;
+      n.vy *= 0.996;
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseleave', function() { mouse.x = -9999; mouse.y = -9999; });
+
+  resize();
+  draw();
+})();
+
+/* ── SCROLL REVEAL ── */
+var reveals = document.querySelectorAll('.reveal');
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e, i) {
+    if (e.isIntersecting) setTimeout(function() { e.target.classList.add('visible'); }, i * 65);
+  });
+}, { threshold: 0.06 });
+reveals.forEach(function(el) { obs.observe(el); });
+</script>
+</body>
+</html>
