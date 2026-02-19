@@ -131,6 +131,9 @@ nav {
   position: relative;
 }
 .project-card:hover { border-color: rgba(195,204,214,0.32); transform: translateY(-3px); box-shadow: 0 26px 80px rgba(0,0,0,0.35); }
+
+/* Shared media style for <img> and <video> */
+.card-media,
 .card-img {
   width: 44%;
   height: 340px;
@@ -141,8 +144,21 @@ nav {
   transition: filter 0.25s, transform 0.25s;
   box-shadow: 0 22px 70px rgba(0,0,0,0.38);
 }
+.project-card:hover .card-media,
 .project-card:hover .card-img { filter: brightness(1) saturate(0.98); transform: translateY(-1px); }
-.card-img-placeholder { width: 100%; height: 210px; display: flex; align-items: center; justify-content: center; font-size: 48px; background: var(--bg3); }
+
+.card-img-placeholder {
+  width: 44%;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: var(--bg3);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
 .card-body { padding: 0; flex: 1; display: flex; flex-direction: column; }
 .card-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; opacity: 0.9; }
 .card-company { font-size: 12px; color: var(--muted); margin-bottom: 9px; }
@@ -217,7 +233,8 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
   .hero-inner { grid-template-columns: 1fr; gap: 36px; }
   .cards-grid, .cards-2col { grid-template-columns: 1fr; }
   .project-card { flex-direction: column; padding: 18px; gap: 18px; align-items: stretch; }
-  .card-img { width: 100%; height: 220px; border-radius: 18px; }
+  .card-media, .card-img { width: 100%; height: 220px; border-radius: 18px; }
+  .card-img-placeholder { width: 100%; height: 220px; border-radius: 18px; }
   .card-title { font-size: 26px; }
 
   .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -245,7 +262,6 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
   transition: opacity 0.2s, transform 0.2s;
 }
 .project-card.private:hover .private-badge { opacity: 1; transform: translateY(0); }
-
 </style>
 </head>
 <body>
@@ -315,7 +331,8 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
 
   <div class="cards-grid">
     <a class="project-card reveal private" href="#" aria-label="Meta (Private case study)" onclick="return false;">
-      <img class="card-img" src="assets/meta-wristband.jpg" alt="EMG" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="assets/meta-wristband.jpg" alt="EMG"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🧠</div>
       <div class="card-body">
         <div class="private-badge">Private case study</div>
@@ -326,8 +343,10 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
         <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
       </div>
     </a>
+
     <a class="project-card reveal" href="sightful.html">
-      <img class="card-img" src="assets/sightful-spacetop.webp" alt="AR" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="assets/sightful-spacetop.webp" alt="AR"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🥽</div>
       <div class="card-body">
         <div class="card-tag">Mixed-Method UX Research</div>
@@ -338,7 +357,6 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
       </div>
     </a>
   </div>
-
 </section>
 
 <div class="divider"></div>
@@ -347,12 +365,13 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
 <section class="section" id="design">
   <div class="section-header reveal">
     <span class="section-eyebrow">Design Work</span>
-    <h2 class="section-title">Selected Design Work/h2>
+    <h2 class="section-title">Selected Design Work</h2>
   </div>
 
   <div class="cards-grid">
     <a class="project-card reveal" href="case-sages-product.html">
-      <img class="card-img" src="assets/sages-cover.png" alt="Sages" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="assets/sages-cover.png" alt="Sages"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">✦</div>
       <div class="card-body">
         <div class="card-tag">0 → 1 Product Design</div>
@@ -362,20 +381,29 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
         <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
       </div>
     </a>
+
     <a class="project-card reveal" href="case-cornerstone.html">
-      <img class="card-img" src="assets/cornerstone-cover.png" alt="Cornerstone" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img class="card-img" src="assets/cornerstone-cover.png" alt="Cornerstone"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🗂️</div>
       <div class="card-body">
         <div class="card-tag">0 → 1 Internal Platform</div>
         <div class="card-company">Sages</div>
-        <div class="card-title"> Research Tool</div>
+        <div class="card-title">Research Tool</div>
         <div class="card-desc">Designed a research infrastructure platform — scalable UI system and interaction logic bridging research operations and product experimentation.</div>
         <div class="card-footer"><span class="view-btn">View Case Study ↗</span></div>
       </div>
     </a>
+
+    <!-- NeuroNYC VIDEO CARD (Option B) -->
     <a class="project-card reveal" href="case-neuronYC.html">
-      <img class="card-img" src="assets/neuronyc-video.mp4" alt="NeuroNYC" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <video class="card-media" autoplay muted loop playsinline preload="metadata"
+             aria-label="NeuroNYC video"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <source src="assets/neuronyc-video.mp4" type="video/mp4">
+      </video>
       <div class="card-img-placeholder" style="display:none">🏙️</div>
+
       <div class="card-body">
         <div class="card-tag">Brand & Identity</div>
         <div class="card-company">Co-Founder, Chair & President</div>
@@ -385,7 +413,6 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
       </div>
     </a>
   </div>
-
 </section>
 
 <div class="divider"></div>
@@ -396,16 +423,18 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
     <span class="section-eyebrow">About</span>
     <h2 class="section-title">Background & Experience</h2>
   </div>
+
   <div class="about-grid">
     <div class="about-body reveal">
       <p>I work at the intersection of neuroscience, AI systems, and product experience. My background spans UX research, 0→1 product design, and spatial computing.</p>
-      <p>I currently lead product experience at Sages and am also the co-founder of NeuroNYC I hold a double B.A. in Computer Science and Neuroscience from Columbia University (Magna Cum Laude).</p>
+      <p>I currently lead product experience at Sages and am also the co-founder of NeuroNYC. I hold a double B.A. in Computer Science and Neuroscience from Columbia University (Magna Cum Laude).</p>
       <p>I divide my work into:</p>
       <div class="about-hl">
         <div class="about-hl-item"><span class="hl-key">Research</span><span class="hl-val">— understanding human behavior, emerging interfaces, and system-level usability</span></div>
         <div class="about-hl-item"><span class="hl-key">Design</span><span class="hl-val">— shaping product architecture, interfaces, and brand systems from concept to launch</span></div>
       </div>
     </div>
+
     <div class="skills-stack reveal">
       <div class="skill-card">
         <div class="skill-card-title">Development</div>
@@ -416,6 +445,7 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
           <li>HTML/CSS, Python, React</li>
         </ul>
       </div>
+
       <div class="skill-card">
         <div class="skill-card-title">Design</div>
         <ul>
@@ -425,6 +455,7 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
           <li>Product imagery, store-ready visuals</li>
         </ul>
       </div>
+
       <div class="skill-card">
         <div class="skill-card-title">Research</div>
         <ul>
@@ -461,7 +492,6 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
 <script>
 /* ── NEURON BACKGROUND ── */
 (function() {
-  // Clean floating dots + subtle network connections
   var canvas = document.getElementById('neuro-bg');
   var ctx = canvas.getContext('2d', { alpha: true });
 
@@ -501,14 +531,12 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
   function draw() {
     ctx.clearRect(0, 0, W, H);
 
-    // background wash (super subtle)
     var g = ctx.createRadialGradient(W * 0.6, H * 0.2, 0, W * 0.6, H * 0.2, Math.max(W, H));
     g.addColorStop(0, 'rgba(160,176,196,0.05)');
     g.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
 
-    // connections
     var maxD = 185;
     for (var i = 0; i < nodes.length; i++) {
       var ni = nodes[i];
@@ -529,7 +557,6 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
         }
       }
 
-      // gentle interaction near mouse
       var mdx = ni.x - mouse.x;
       var mdy = ni.y - mouse.y;
       var md = Math.sqrt(mdx * mdx + mdy * mdy);
@@ -539,7 +566,6 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
       }
     }
 
-    // dots
     for (var k = 0; k < nodes.length; k++) {
       var n = nodes[k];
       ctx.beginPath();
@@ -547,15 +573,12 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
       ctx.fillStyle = 'rgba(244,245,247,' + (n.a * 0.82).toFixed(3) + ')';
       ctx.fill();
 
-      // drift
       n.x += n.vx;
       n.y += n.vy;
-      // soft wrap
       if (n.x < -20) n.x = W + 20;
       if (n.x > W + 20) n.x = -20;
       if (n.y < -20) n.y = H + 20;
       if (n.y > H + 20) n.y = -20;
-      // dampen so it stays calm
       n.vx *= 0.996;
       n.vy *= 0.996;
     }
