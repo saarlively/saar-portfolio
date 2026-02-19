@@ -179,20 +179,54 @@ nav {
 }
 .project-card:hover .view-btn { border-color: rgba(195,204,214,0.30); background: rgba(160,176,196,0.16); }
 
-/* ABOUT */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-.about-body { font-size: 15px; color: rgba(232,237,245,0.72); line-height: 1.9; }
-.about-body p { margin-bottom: 16px; }
-.about-hl { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
-.about-hl-item { display: flex; gap: 10px; font-size: 14px; }
-.hl-key { color: var(--accent); font-weight: 500; }
-.hl-val { color: var(--muted); }
-.skills-stack { display: flex; flex-direction: column; gap: 16px; }
-.skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; }
-.skill-card-title { font-family: var(--serif); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-.skill-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-.skill-card li { font-size: 13px; color: var(--muted); display: flex; gap: 8px; }
-.skill-card li::before { content: '·'; color: var(--accent); font-size: 16px; line-height: 1; }
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">About</span>
+    <h2 class="section-title">Background & Experience</h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>I work at the intersection of neuroscience, AI systems, and product experience. My background spans UX research, 0→1 product design, and spatial computing.</p>
+      <p>I currently lead product experience at Sages and am also the co-founder of NeuroNYC. I hold a double B.A. in Computer Science and Neuroscience from Columbia University (Magna Cum Laude).</p>
+      <p>I divide my work into:</p>
+      <div class="about-hl">
+        <div class="about-hl-item">
+          <span class="hl-key">Research</span>
+          <span class="hl-val">— understanding human behavior, emerging interfaces, and system-level usability</span>
+        </div>
+        <div class="about-hl-item">
+          <span class="hl-key">Design</span>
+          <span class="hl-val">— shaping product architecture, interfaces, and brand systems from concept to launch</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-stack reveal">
+      <div class="skill-card">
+        <div class="skill-card-title">Design</div>
+        <ul>
+          <li>Product & UX design</li>
+          <li>Figma prototyping (low → high fidelity)</li>
+          <li>Brand & logo design</li>
+          <li>Product imagery, store-ready visuals</li>
+        </ul>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-title">Research</div>
+        <ul>
+          <li>Research planning & study design</li>
+          <li>Moderated user interviews and focus groups</li>
+          <li>Usability testing</li>
+          <li>Thematic analysis</li>
+          <li>Surveys</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
 /* CONTACT */
 .contact-section { position: relative; z-index: 1; padding: 90px 56px; border-top: 1px solid var(--border); }
