@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -26,6 +26,7 @@
 body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.75}
 a{text-decoration:none;color:inherit}
 
+/* NAV */
 nav{
   position:sticky;
   top:0;
@@ -94,24 +95,47 @@ h1{
 
 .grid{
   display:grid;
-  gap:20px;
+  gap:24px;
 }
 
+/* CARD */
 .item{
   border:1px solid var(--border);
-  border-radius:22px;
-  padding:28px;
-  background:rgba(0,0,0,.10);
+  border-radius:26px;
+  padding:22px;
+  background:linear-gradient(180deg, rgba(18,21,33,.75), rgba(14,16,22,.70));
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  gap:24px;
   transition:transform .2s ease, border-color .2s ease;
 }
 .item:hover{
-  transform:translateY(-3px);
+  transform:translateY(-4px);
   border-color:rgba(195,204,214,.30);
 }
 
+/* IMAGE */
+.item-media{
+  width:190px;
+  height:130px;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  flex-shrink:0;
+}
+.item-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:brightness(.95);
+}
+
+/* CONTENT */
+.item-content{
+  flex:1;
+  min-width:0;
+}
 .item .tag{
   font-family:var(--mono);
   font-size:10px;
@@ -129,9 +153,12 @@ h1{
   color:var(--muted);
   margin-top:6px;
 }
+
+/* ARROW */
 .arrow{
   font-size:20px;
   color:rgba(244,245,247,.55);
+  flex-shrink:0;
 }
 
 /* PRIVATE ITEMS */
@@ -167,6 +194,21 @@ h1{
   color:rgba(244,245,247,.45);
 }
 
+/* RESPONSIVE */
+@media(max-width:800px){
+  .item{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .item-media{
+    width:100%;
+    height:180px;
+  }
+  .arrow{
+    align-self:flex-end;
+  }
+}
+
 @media(max-width:700px){
   h1{font-size:44px}
 }
@@ -199,7 +241,10 @@ h1{
     <div class="grid">
 
       <a class="item" href="sightful-hardware.html">
-        <div>
+        <div class="item-media">
+          <img src="assets/ea.png" alt="Hardware research">
+        </div>
+        <div class="item-content">
           <div class="tag">Hardware Research</div>
           <div class="title">Hardware Look & Feel Testing</div>
           <div class="desc">Evaluated comfort, perceived quality, and physical usability of Gen1 prototype.</div>
@@ -208,7 +253,10 @@ h1{
       </a>
 
       <a class="item" href="sightful-spatial-os.html">
-        <div>
+        <div class="item-media">
+          <img src="assets/sightful-spacetop.webp" alt="Onboarding usability">
+        </div>
+        <div class="item-content">
           <div class="tag">Spatial OS Research</div>
           <div class="title">Spatial OS Onboarding Usability</div>
           <div class="desc">Tested first-time setup, system discoverability, and onboarding clarity.</div>
@@ -219,39 +267,36 @@ h1{
     </div>
   </section>
 
-  <!-- ADDITIONAL / PRIVATE -->
+  <!-- PRIVATE -->
   <section class="section">
     <div class="section-title">Additional Research (Private)</div>
     <div class="grid">
 
       <div class="item private">
-        <div>
+        <div class="item-content">
           <div class="tag">Experimental</div>
           <div class="private-badge">Private case study</div>
           <div class="title">Wizard-of-Oz Gesture Testing</div>
           <div class="desc">Evaluated potential hand gesture interactions prior to engineering implementation.</div>
         </div>
-        <div class="arrow">↗</div>
       </div>
 
       <div class="item private">
-        <div>
+        <div class="item-content">
           <div class="tag">Enterprise</div>
           <div class="private-badge">Private case study</div>
           <div class="title">Longitudinal Enterprise Beta Testing</div>
           <div class="desc">Measured long-term product value through diary studies and weekly interviews.</div>
         </div>
-        <div class="arrow">↗</div>
       </div>
 
       <div class="item private">
-        <div>
+        <div class="item-content">
           <div class="tag">Productivity Analysis</div>
           <div class="private-badge">Private case study</div>
           <div class="title">Cognitive Load & Productivity Study</div>
           <div class="desc">Compared task switching, fatigue, and workload across spatial vs traditional setups.</div>
         </div>
-        <div class="arrow">↗</div>
       </div>
 
     </div>
