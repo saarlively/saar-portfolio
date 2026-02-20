@@ -167,6 +167,26 @@ li{margin:6px 0}
   text-transform: uppercase;
 }
 
+/* IMAGE PLACEHOLDER (so you can drop in later) */
+.image-placeholder{
+  width: 100%;
+  max-width: 1200px;
+  height: 360px;
+  border-radius: 18px;
+  border: 1px dashed rgba(255,255,255,.18);
+  background: rgba(255,255,255,.03);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: 18px;
+  color: rgba(244,245,247,.55);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
 /* FOOTER */
 .footer{
   margin-top:64px;
@@ -182,6 +202,7 @@ li{margin:6px 0}
 /* RESPONSIVE */
 @media(max-width:700px){
   h1{font-size:44px}
+  .image-placeholder{height:260px}
 }
 </style>
 </head>
@@ -204,60 +225,158 @@ li{margin:6px 0}
   <h1>Usability Testing: AR Look and Feel</h1>
 
   <p class="sub">
-    Designed a research tool interface end-to-end — from early sketches to prototypes used for final development.
+    Usability study evaluating first-time experience, perceived quality, and early friction points for a Gen1 spatial computing prototype.
+    The goal was to validate whether new users could complete key tasks independently and to identify the most critical experience issues to address before scaling.
   </p>
 
   <div class="meta">
     <span class="pill">UX Researcher</span>
-    <span class="pill">Tools: Dovetail, Qualtrics, Respondent, OBS, Python</span>
+    <span class="pill">Methods: Usability Testing · Semi-Structured Interviews · Card Sorting · Thematic Analysis</span>
+    <span class="pill">Tools: Dovetail · Qualtrics · Respondent · OBS · Python</span>
   </div>
 
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="h2">Overview</div>
+    <div class="card">
+      <p>
+        This study focused on how people perceived the product’s look and feel, and how effectively they could use it during an initial session.
+        We combined hands-on usability tasks with qualitative interview questions to understand both performance and perception.
+      </p>
+      <ul>
+        <li>Assess first-time usability across core workflows</li>
+        <li>Identify friction points that reduce trust or perceived quality</li>
+        <li>Explore how users mentally position the product relative to the market (to support pricing and messaging decisions)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MY ROLE -->
   <section class="section">
     <div class="h2">My role</div>
     <div class="card">
-      <p>I owned the end-to-end product design — from early exploration and flow definition to UI, component system, and high-fidelity prototypes used for MVP planning and fundraising.</p>
+      <p>
+        I led the research end-to-end — shaping the study plan, running sessions, and synthesizing insights into clear recommendations for product and design teams.
+      </p>
       <ul>
-        <li>Defined core journeys for both mobile and desktop versions</li>
+        <li>Designed the study plan and task flow</li>
+        <li>Moderated usability sessions and interviews</li>
+        <li>Structured and coded qualitative findings in Dovetail</li>
+        <li>Reported themes and prioritized opportunities for iteration</li>
       </ul>
     </div>
   </section>
 
-    <!-- UPDATED: Selected screens (big, centered, no card) -->
+  <!-- PRODUCT IMAGE (KEEP AREA) -->
   <section class="section">
-    <div class="h2">Product used in usability testing - Gen1 Prototype</div>
-
+    <div class="h2">Product used in usability testing — Gen1 prototype</div>
     <div class="hero-image">
-      <img src="assets/gen1.png" alt="High-fidelity Mobile Version">
+      <img src="assets/gen1.png" alt="Gen1 prototype used in usability testing">
+      <p class="hero-caption">Gen1 prototype used during the study</p>
     </div>
   </section>
 
+  <!-- STUDY DESIGN -->
   <section class="section">
-    <div class="h2">sketches to final design</div>
-
-    <div class="hero-image">
-      <img src="assets/cornerstone.png" alt="High-fidelity Mobile Version">
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="h2">Design approach</div>
+    <div class="h2">Study design</div>
     <div class="card">
+      <p>
+        Participants completed a guided hands-on session with minimal assistance.
+        The session combined structured tasks with follow-up interview questions to capture both usability performance and perception.
+      </p>
       <ul>
-        <li>Started with quick sketches and brainstorming sessions with product and research team.</li>
-        <li>The goal was to create a tool that can be used both internally, and as an initial pilot of our MVP product.</li>
+        <li>Hands-on tasks across core interactions and workflows</li>
+        <li>Semi-structured interview questions on comfort, trust, and perceived quality</li>
+        <li>Follow-up reflection on value, positioning, and adoption barriers</li>
       </ul>
     </div>
   </section>
 
+  <!-- SKETCHES / PROCESS IMAGE (KEEP AREA) -->
+  <section class="section">
+    <div class="h2">Study artifacts & documentation</div>
+    <div class="hero-image">
+      <img src="assets/cornerstone.png" alt="Research artifacts and documentation">
+      <p class="hero-caption">Research artifacts and documentation</p>
+    </div>
+  </section>
 
+  <!-- METHODS -->
   <section class="section">
     <div class="h2">Skills & methods</div>
     <div class="card">
       <ul>
-        <li>Usability Testing</li>
-        <li>Semi Structured Interviews</li>
-        <li>Card Sorting</li>
-        <li>Thematic Analysis</li>
+        <li>Usability testing</li>
+        <li>Semi-structured interviews</li>
+        <li>Card sorting</li>
+        <li>Thematic analysis</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FINDINGS (HIGH LEVEL, NO SENSITIVE DETAILS) -->
+  <section class="section">
+    <div class="h2">Key themes</div>
+    <div class="card">
+      <p>
+        Synthesis focused on experience signals that influence trust, comfort, and perceived product readiness.
+        Findings were clustered into themes across physical interaction, early usability, and confidence in the system.
+      </p>
+      <ul>
+        <li>First-time clarity: where users expected more guidance or feedback</li>
+        <li>Perceived quality signals: moments that increased or reduced trust in the hardware</li>
+        <li>Comfort and fit: friction points that could impact extended use</li>
+        <li>Workflow continuity: how easily users could stay “in flow” during core tasks</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MARKET FRAMING & PRICING -->
+  <section class="section">
+    <div class="h2">Market framing & pricing perception</div>
+    <div class="card">
+      <p>
+        In addition to usability testing, we explored how users mentally positioned the product within the broader computing landscape.
+      </p>
+      <p style="margin-top:12px;">
+        We conducted a structured <strong>card sorting exercise</strong> to evaluate how participants categorized the device relative to existing technologies, including:
+      </p>
+      <ul>
+        <li>Productivity laptops</li>
+        <li>Immersive VR/XR headsets</li>
+        <li>Emerging hybrid computing devices</li>
+      </ul>
+      <p style="margin-top:12px;">
+        The goal was to understand category alignment, perceived functional equivalence, and implied pricing expectations — without explicitly anchoring participants to a specific price point.
+        This activity provided insight into how users interpret the product’s value proposition within the competitive ecosystem.
+      </p>
+    </div>
+  </section>
+
+  <!-- PLACEHOLDER FOR CARD SORTING IMAGE -->
+  <section class="section">
+    <div class="h2">Card sorting activity</div>
+    <div class="hero-image">
+      <!-- Replace this placeholder with your image when ready -->
+      <div class="image-placeholder">
+        Drop card sorting photo here<br>
+        (e.g., assets/cardsorting.png)
+      </div>
+      <p class="hero-caption">Structured card sorting to understand market framing</p>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="section">
+    <div class="h2">Impact</div>
+    <div class="card">
+      <p>
+        The study informed design and product decisions by clarifying where the experience felt intuitive versus where additional guidance, refinement, or repositioning could improve first-time success and perceived readiness.
+      </p>
+      <ul>
+        <li>Mapped high-friction moments in early usage</li>
+        <li>Identified perception drivers that affect trust and confidence</li>
+        <li>Supported product positioning discussions through market framing research</li>
       </ul>
     </div>
   </section>
