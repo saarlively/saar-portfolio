@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,109 +7,41 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-/* Clean, muted palette */
---bg:       #0b0c10;
---bg2:      #0f1118;
---bg3:      #121521;
---card:     rgba(18,21,33,0.78);
---card2:    rgba(22,26,40,0.76);
---border:   rgba(255,255,255,0.08);
---border2:  rgba(160,176,196,0.28);
---text:     rgba(244,245,247,0.92);
---muted:    rgba(244,245,247,0.62);
---muted2:   rgba(244,245,247,0.42);
---accent:   #a0b0c4;         /* muted blue-gray */
---accent2:  #c3ccd6;         /* soft highlight */
---accent-dim: rgba(160,176,196,0.14);
+  --bg:       #0b0c10;
+  --bg2:      #0f1118;
+  --bg3:      #121521;
+  --card:     rgba(18,21,33,0.78);
+  --card2:    rgba(22,26,40,0.76);
+  --border:   rgba(255,255,255,0.08);
+  --border2:  rgba(160,176,196,0.28);
+  --text:     rgba(244,245,247,0.92);
+  --muted:    rgba(244,245,247,0.62);
+  --muted2:   rgba(244,245,247,0.42);
+  --accent:   #a0b0c4;
+  --accent2:  #c3ccd6;
+  --accent-dim: rgba(160,176,196,0.14);
 
---serif:    'Cormorant Garamond', serif;
---body:     'Instrument Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
---mono:     'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --serif:    'Cormorant Garamond', serif;
+  --body:     'Instrument Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --mono:     'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
 ::selection { background: var(--accent); color: var(--bg); }
 #neuro-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-/* EXTRAS (minimal) */
-.extras-grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.extra-card{
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(0,0,0,0.12);
-  border-radius: 22px;
-  padding: 18px 18px 16px;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-  display:flex;
-  flex-direction:column;
-  min-height: 150px;
-}
-
-.extra-card:hover{
-  transform: translateY(-2px);
-  border-color: rgba(195,204,214,0.30);
-  box-shadow: 0 22px 60px rgba(0,0,0,0.28);
-}
-
-.extra-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.extra-tag{
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-  opacity: 0.9;
-}
-
-.extra-title{
-  font-family: var(--serif);
-  font-size: 22px;
-  line-height: 1.15;
-  margin-top: 8px;
-}
-
-.extra-desc{
-  color: rgba(244,245,247,0.60);
-  font-size: 13px;
-  line-height: 1.7;
-  margin-top: 8px;
-}
-
-.extra-arrow{
-  color: rgba(244,245,247,0.55);
-  font-size: 16px;
-  flex-shrink: 0;
-}
-
-@media (max-width: 900px){
-  .extras-grid{ grid-template-columns: 1fr; }
-}
 /* NAV */
 nav {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-display: flex; justify-content: space-between; align-items: center;
-padding: 20px 56px;
-background: rgba(11,15,26,0.88);
-backdrop-filter: blur(20px);
-border-bottom: 1px solid var(--border);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 56px;
+  background: rgba(11,15,26,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
 }
 .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); text-decoration: none; }
 .nav-links { display: flex; gap: 40px; list-style: none; }
@@ -119,41 +50,40 @@ border-bottom: 1px solid var(--border);
 
 /* HERO */
 .hero {
-min-height: 100vh; display: flex; align-items: center;
-padding: 120px 56px 80px; position: relative; z-index: 1;
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 56px 80px; position: relative; z-index: 1;
 }
 .hero-inner {
-display: grid; grid-template-columns: 1fr 420px;
-gap: 64px; align-items: center; width: 100%; max-width: 1200px;
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 64px; align-items: center; width: 100%; max-width: 1200px;
 }
 .hero-eyebrow {
-font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em;
-text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
-opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+  opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
 }
 .hero-title {
-font-family: var(--serif); font-size: clamp(52px, 7vw, 96px);
-font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; color: var(--text);
-margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+  font-family: var(--serif); font-size: clamp(52px, 7vw, 96px);
+  font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; color: var(--text);
+  margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
 }
 .hero-title .cyan { color: var(--accent); }
 .hero-sub {
-font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 480px;
-margin-bottom: 36px; opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+  font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 480px;
+  margin-bottom: 36px; opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
 }
-.hero-sub a { color: var(--accent); text-decoration: none; }
 .hero-cta { display: flex; gap: 14px; align-items: center; opacity: 0; animation: fadeUp 0.6s 0.45s forwards; }
 .btn-primary {
-background: var(--accent); color: var(--bg); border: none;
-padding: 13px 28px; border-radius: 100px; font-family: var(--body);
-font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none;
-display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
+  background: var(--accent); color: var(--bg); border: none;
+  padding: 13px 28px; border-radius: 100px; font-family: var(--body);
+  font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
 }
 .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
 .btn-secondary {
-background: transparent; color: var(--text); border: 1px solid var(--border);
-padding: 13px 28px; border-radius: 100px; font-family: var(--body);
-font-size: 14px; cursor: pointer; text-decoration: none; transition: all 0.2s;
+  background: transparent; color: var(--text); border: 1px solid var(--border);
+  padding: 13px 28px; border-radius: 100px; font-family: var(--body);
+  font-size: 14px; cursor: pointer; text-decoration: none; transition: all 0.2s;
 }
 .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 .hero-social { display: flex; gap: 18px; margin-top: 28px; opacity: 0; animation: fadeUp 0.6s 0.54s forwards; }
@@ -162,16 +92,16 @@ font-size: 14px; cursor: pointer; text-decoration: none; transition: all 0.2s;
 
 /* SPEC CARD */
 .spec-card {
-background: var(--card); border: 1px solid var(--border);
-border-radius: 20px; padding: 28px;
-opacity: 0; animation: fadeUp 0.6s 0.38s forwards;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 28px;
+  opacity: 0; animation: fadeUp 0.6s 0.38s forwards;
 }
 .spec-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
 .spec-tags { display: flex; flex-wrap: wrap; gap: 9px; }
 .spec-tag {
-background: var(--bg3); border: 1px solid var(--border);
-color: var(--text); font-size: 13px; padding: 7px 15px;
-border-radius: 100px; transition: all 0.2s; cursor: default;
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--text); font-size: 13px; padding: 7px 15px;
+  border-radius: 100px; transition: all 0.2s; cursor: default;
 }
 .spec-tag:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -181,51 +111,57 @@ border-radius: 100px; transition: all 0.2s; cursor: default;
 .section-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
 .section-title { font-family: var(--serif); font-size: clamp(30px, 4vw, 48px); font-weight: 700; color: var(--text); line-height: 1.15; }
 
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 0 56px; position: relative; z-index: 1; }
+
 /* CARDS */
 .cards-grid { display: grid; grid-template-columns: 1fr; gap: 32px; max-width: 1100px; margin: 0 auto; }
 .cards-2col  { display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 32px; max-width: 1100px; margin-left: auto; margin-right: auto; }
-.project-card {
-background: linear-gradient(180deg, rgba(18,21,33,0.82) 0%, rgba(16,18,26,0.78) 100%);
-border: 1px solid rgba(255,255,255,0.10);
-border-radius: 26px;
-overflow: hidden;
-text-decoration: none;
-color: inherit;
-display: flex;
-flex-direction: row;
-gap: 34px;
-padding: 22px;
-align-items: center;
-transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-position: relative;
-}
-.project-card:hover { border-color: rgba(195,204,214,0.32); transform: translateY(-3px); box-shadow: 0 26px 80px rgba(0,0,0,0.35); }
 
-/* Shared media style for <img> and <video> */
+.project-card{
+  background: linear-gradient(180deg, rgba(18,21,33,0.82) 0%, rgba(16,18,26,0.78) 100%);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 26px;
+  overflow: hidden;
+  color: inherit;
+  display: flex;
+  flex-direction: row;
+  gap: 34px;
+  padding: 22px;
+  align-items: center;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+.project-card:hover{
+  border-color: rgba(195,204,214,0.32);
+  transform: translateY(-3px);
+  box-shadow: 0 26px 80px rgba(0,0,0,0.35);
+}
+
 .card-media,
-.card-img {
-width: 44%;
-height: 340px;
-object-fit: cover;
-display: block;
-border-radius: 22px;
-filter: brightness(0.92) saturate(0.92);
-transition: filter 0.25s, transform 0.25s;
-box-shadow: 0 22px 70px rgba(0,0,0,0.38);
+.card-img{
+  width: 44%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+  border-radius: 22px;
+  filter: brightness(0.92) saturate(0.92);
+  transition: filter 0.25s, transform 0.25s;
+  box-shadow: 0 22px 70px rgba(0,0,0,0.38);
 }
 .project-card:hover .card-media,
 .project-card:hover .card-img { filter: brightness(1) saturate(0.98); transform: translateY(-1px); }
 
-.card-img-placeholder {
-width: 44%;
-height: 340px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 48px;
-background: var(--bg3);
-border-radius: 22px;
-border: 1px solid rgba(255,255,255,0.10);
+.card-img-placeholder{
+  width: 44%;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: var(--bg3);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.10);
 }
 
 .card-body { padding: 0; flex: 1; display: flex; flex-direction: column; }
@@ -233,20 +169,58 @@ border: 1px solid rgba(255,255,255,0.10);
 .card-company { font-size: 12px; color: var(--muted); margin-bottom: 9px; }
 .card-title { font-family: var(--serif); font-size: 42px; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.08; letter-spacing: -0.01em; }
 .card-desc { font-size: 15px; color: rgba(244,245,247,0.64); line-height: 1.8; max-width: 640px; }
-.card-footer { display: flex; justify-content: flex-start; margin-top: 18px; padding-top: 0; border-top: none; }
-.view-btn {
-background: rgba(160,176,196,0.12);
-color: rgba(244,245,247,0.88);
-border: 1px solid rgba(255,255,255,0.14);
-padding: 8px 16px;
-border-radius: 999px;
-font-size: 12px;
-font-weight: 500;
-opacity: 1;
-transform: none;
-transition: border-color 0.2s, background 0.2s;
+
+/* NEW: button row */
+.card-footer{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top: 18px;
 }
-.project-card:hover .view-btn { border-color: rgba(195,204,214,0.30); background: rgba(160,176,196,0.16); }
+.action-btn{
+  background: rgba(160,176,196,0.12);
+  color: rgba(244,245,247,0.88);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.action-btn:hover{
+  border-color: rgba(195,204,214,0.30);
+  background: rgba(160,176,196,0.16);
+  transform: translateY(-1px);
+}
+.action-btn.secondary{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(244,245,247,0.78);
+}
+.action-btn.secondary:hover{
+  border-color: rgba(160,176,196,0.34);
+  color: rgba(244,245,247,0.92);
+}
+
+/* PRIVATE CASE BADGE */
+.project-card.private { cursor: not-allowed; opacity: 0.92; }
+.private-badge {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244,245,247,0.78);
+  background: rgba(0,0,0,0.28);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 8px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
 
 /* ABOUT */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
@@ -255,7 +229,7 @@ transition: border-color 0.2s, background 0.2s;
 .about-hl { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
 .about-hl-item { display: flex; gap: 10px; font-size: 14px; }
 .hl-key { color: var(--accent); font-weight: 500; }
-.hl-val { color: var(--muted); }
+
 .skills-stack { display: flex; flex-direction: column; gap: 16px; }
 .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px 24px; }
 .skill-card-title { font-family: var(--serif); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
@@ -268,22 +242,18 @@ transition: border-color 0.2s, background 0.2s;
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .contact-title { font-family: var(--serif); font-size: clamp(38px, 5vw, 68px); font-weight: 800; line-height: 1.1; color: var(--text); margin-bottom: 14px; }
 .contact-title .cyan { color: var(--accent); }
-.contact-sub { font-size: 15px; color: var(--muted); line-height: 1.8; }
 .contact-links { display: flex; flex-direction: column; }
 .contact-link {
-display: flex; align-items: center; gap: 16px;
-padding: 20px 0; border-bottom: 1px solid var(--border);
-text-decoration: none; color: var(--text); transition: all 0.2s;
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+  text-decoration: none; color: var(--text); transition: all 0.2s;
 }
 .contact-link:first-child { border-top: 1px solid var(--border); }
 .contact-link:hover { color: var(--accent); }
-.contact-link:hover .cl-arrow { transform: translate(3px,-3px); color: var(--accent); }
 .cl-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); width: 72px; flex-shrink: 0; }
 .cl-value { font-size: 14px; flex: 1; }
 .cl-arrow { font-size: 16px; color: var(--muted2); transition: all 0.2s; }
-
-/* DIVIDER */
-.divider { height: 1px; background: var(--border); margin: 0 56px; position: relative; z-index: 1; }
+.contact-link:hover .cl-arrow { transform: translate(3px,-3px); color: var(--accent); }
 
 /* FOOTER */
 footer { position: relative; z-index: 1; padding: 26px 56px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
@@ -296,132 +266,115 @@ footer span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-nav { padding: 16px 24px; } .nav-links { display: none; }
-.hero, .section, .contact-section { padding-left: 24px; padding-right: 24px; }
-.hero { padding-top: 100px; }
-.hero-inner { grid-template-columns: 1fr; gap: 36px; }
-.cards-grid, .cards-2col { grid-template-columns: 1fr; }
-.project-card { flex-direction: column; padding: 18px; gap: 18px; align-items: stretch; }
-.card-media, .card-img { width: 100%; height: 220px; border-radius: 18px; }
-.card-img-placeholder { width: 100%; height: 220px; border-radius: 18px; }
-.card-title { font-size: 26px; }
-
-.about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-.divider { margin: 0 24px; }
-footer { padding: 24px; flex-direction: column; gap: 8px; }
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero, .section, .contact-section { padding-left: 24px; padding-right: 24px; }
+  .hero { padding-top: 100px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+  .project-card { flex-direction: column; padding: 18px; gap: 18px; align-items: stretch; }
+  .card-media, .card-img, .card-img-placeholder { width: 100%; height: 220px; border-radius: 18px; }
+  .card-title { font-size: 26px; }
+  .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .divider { margin: 0 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; }
 }
-
-/* PRIVATE CASE BADGE */
-.project-card.private { cursor: not-allowed; }
-.project-card.private .view-btn { display: none; }
-.private-badge {
-align-self: flex-start;
-font-family: var(--mono);
-font-size: 10px;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: rgba(244,245,247,0.78);
-background: rgba(0,0,0,0.28);
-border: 1px solid rgba(255,255,255,0.14);
-padding: 8px 12px;
-border-radius: 999px;
-margin-bottom: 14px;
-opacity: 0;
-transform: translateY(4px);
-transition: opacity 0.2s, transform 0.2s;
-}
-.project-card.private:hover .private-badge { opacity: 1; transform: translateY(0); }
 </style>
 </head>
-<body>
 
+<body>
 <canvas id="neuro-bg"></canvas>
 
 <!-- NAV -->
 <nav>
-<a href="index.html" class="nav-logo">SAAR</a>
-<ul class="nav-links">
-<li><a href="#research">Research</a></li>
-<li><a href="#design">Design</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
+  <a href="index.html" class="nav-logo">SAAR</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#extras">Extras</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-<div class="hero-inner">
-<div>
-<p class="hero-eyebrow">Researcher * Designer * Founder</p>
-<h1 class="hero-title">Hello, I’m <span class="cyan">Saar</span>.</h1>
-<p class="hero-sub">
-I’m a UX researcher and designer specializing in experiences for neurotech, AI, and spatial computing.
-</p>
-<div class="hero-cta">
-<a href="#contact" class="btn-primary">Let's chat →</a>
-<a href="#research" class="btn-secondary">View Work</a>
-</div>
-<div class="hero-social">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">Researcher * Designer * Founder</p>
+      <h1 class="hero-title">Hello, I’m <span class="cyan">Saar</span>.</h1>
+      <p class="hero-sub">
+        I’m a UX researcher and designer specializing in experiences for neurotech, AI, and spatial computing.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Let's chat →</a>
+        <a href="#research" class="btn-secondary">View Work</a>
+      </div>
 
-<a href="https://www.linkedin.com/in/saar-belle-lively/" title="LinkedIn">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-</a>
-<a href="mailto:saarlively1@gmail.com" title="Email">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-</a>
-</div>
-</div>
+      <div class="hero-social">
+        <a href="https://www.linkedin.com/in/saar-belle-lively/" title="LinkedIn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="mailto:saarlively1@gmail.com" title="Email">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+    </div>
 
-<div class="spec-card">
-<p class="spec-label">Specializations</p>
-<div class="spec-tags">
-<span class="spec-tag">Neurotech</span>
-<span class="spec-tag">Neuroscience</span>
-<span class="spec-tag">AR & Spatial</span>
-<span class="spec-tag">AI Systems</span>
-<span class="spec-tag">UX Research</span>
-<span class="spec-tag">0→1 Design</span>
-<span class="spec-tag">Brand Systems</span>
-</div>
-</div>
-</div>
+    <div class="spec-card">
+      <p class="spec-label">Specializations</p>
+      <div class="spec-tags">
+        <span class="spec-tag">Neurotech</span>
+        <span class="spec-tag">Neuroscience</span>
+        <span class="spec-tag">AR & Spatial</span>
+        <span class="spec-tag">AI Systems</span>
+        <span class="spec-tag">UX Research</span>
+        <span class="spec-tag">0→1 Design</span>
+        <span class="spec-tag">Brand Systems</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- RESEARCH -->
 <section class="section" id="research">
-<div class="section-header reveal">
-<span class="section-eyebrow">Research</span>
-<h2 class="section-title">Selected UX Research</h2>
-</div>
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Research</span>
+    <h2 class="section-title">Selected UX Research</h2>
+  </div>
 
-<div class="cards-grid">
-<a class="project-card reveal private" href="#" aria-label="Meta (Private case study)" onclick="return false;">
-<img class="card-img" src="assets/meta-wristband.jpg" alt="EMG"
-onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-<div class="card-img-placeholder" style="display:none">🧠</div>
-<div class="card-body">
-<div class="private-badge">Private case study</div>
-<div class="card-tag">META REALITY LABS</div>
-<div class="card-title">EMG Wearables Research</div>
-<div class="card-desc">UX research on EMG-based wristband for next-gen HCI in AR and VR.</div>
-<div class="card-footer"><span class="view-btn">View Project ↗</span></div>
-</div>
-</a>
+  <div class="cards-grid">
 
-<a class="project-card reveal" href="sightful.html">
-<img class="card-img" src="assets/me.jpeg" alt="AR"
-onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-<div class="card-img-placeholder" style="display:none">🥽</div>
-<div class="card-body">
-<div class="card-tag">SIGHTFUL</div>
-<div class="card-title">Spatial Computing & AR Laptop Research</div>
-<div class="card-desc">Led U.S. UX research for an AR laptop. Established NYC UXR lab, defined spatial interaction patterns adopted into the roadmap, validated enterprise use cases.</div>
-<div class="card-footer"><span class="view-btn">View Projects ↗</span></div>
-</div>
-</a>
-</div>
+    <article class="project-card reveal private" aria-label="Meta (Private case study)">
+      <img class="card-img" src="assets/meta-wristband.jpg" alt="EMG"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🧠</div>
+
+      <div class="card-body">
+        <div class="private-badge">Private case study</div>
+        <div class="card-tag">META REALITY LABS</div>
+        <div class="card-title">EMG Wearables Research</div>
+        <div class="card-desc">UX research on EMG-based wristband for next-gen HCI in AR and VR.</div>
+      </div>
+    </article>
+
+    <article class="project-card reveal">
+      <img class="card-img" src="assets/me.jpeg" alt="AR"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🥽</div>
+
+      <div class="card-body">
+        <div class="card-tag">SIGHTFUL</div>
+        <div class="card-title">Spatial Computing & AR Laptop Research</div>
+        <div class="card-desc">Led U.S. UX research for an AR laptop. Established NYC UXR lab, defined spatial interaction patterns adopted into the roadmap, validated enterprise use cases.</div>
+        <div class="card-footer">
+          <a class="action-btn" href="sightful.html">View Projects ↗</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -433,10 +386,9 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
     <h2 class="section-title">Selected Design Work</h2>
   </div>
 
-  <!-- ✅ ONE grid wrapper for all cards -->
   <div class="cards-grid">
 
-    <a class="project-card reveal" href="case-cornerstone.html">
+    <article class="project-card reveal">
       <img class="card-img" src="assets/cornerstone-cover.png" alt="Cornerstone"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">🗂️</div>
@@ -445,11 +397,13 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
         <div class="card-tag">SAGES</div>
         <div class="card-title">Research Tool</div>
         <div class="card-desc">Designed a research infrastructure platform for both desktop and mobile.</div>
-        <div class="card-footer"><span class="view-btn">View Project ↗</span></div>
+        <div class="card-footer">
+          <a class="action-btn" href="case-cornerstone.html">View Project ↗</a>
+        </div>
       </div>
-    </a>
+    </article>
 
-    <a class="project-card reveal" href="case-sages-product.html">
+    <article class="project-card reveal">
       <img class="card-img" src="assets/sages-cover.png" alt="Sages"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">✦</div>
@@ -458,12 +412,14 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
         <div class="card-tag">SAGES</div>
         <div class="card-title">Sages Core Product Experience</div>
         <div class="card-desc">Built the foundational interface from wireframes to high-fidelity Figma, serving fundraising, strategy, and MVP engineering.</div>
-        <div class="card-footer"><span class="view-btn">View Project ↗</span></div>
+        <div class="card-footer">
+          <a class="action-btn" href="case-sages-product.html">View Project ↗</a>
+        </div>
       </div>
-    </a>
+    </article>
 
-    <!-- NeuroNYC VIDEO CARD -->
-    <a class="project-card reveal" href="https://neuro-nyc.org/" target="_blank" rel="noopener noreferrer">
+    <!-- NeuroNYC -->
+    <article class="project-card reveal">
       <video class="card-media" autoplay muted loop playsinline preload="metadata"
         aria-label="NeuroNYC video"
         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -476,64 +432,89 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
         <div class="card-company">Co-Founder, Chair & President</div>
         <div class="card-title">NeuroNYC — Brand & Website</div>
         <div class="card-desc">Designed the complete brand system for a NYC neurotech innovation community — logo, color architecture, website, event materials, and digital communications.</div>
-        <div class="card-footer"><span class="view-btn">View Website ↗</span></div>
+        <div class="card-footer">
+          <a class="action-btn" href="https://neuro-nyc.org/" target="_blank" rel="noopener noreferrer">View Website ↗</a>
+          <a class="action-btn secondary" href="neuronyc-brand.html">View Brand System ↗</a>
+        </div>
       </div>
-    </a>
+    </article>
 
   </div>
 </section>
 
-  <div class="divider"></div>
+<div class="divider"></div>
 
+<!-- EXTRAS -->
 <section class="section" id="extras">
   <div class="section-header reveal">
     <span class="section-eyebrow">Extras</span>
     <h2 class="section-title">Selected Explorations & Client Work</h2>
   </div>
 
-  <!-- Neuro / Concept Projects (WITH images) -->
+  <!-- WITH images: Neuronet + Market Analysis -->
   <div class="cards-grid">
 
-        <a class="project-card reveal" href="https://saarlively.github.io/neuronet-prototype/" target="_blank">
-      <img class="card-img" src="assets/neuronet.png" alt="Neuronet Prototype">
+    <article class="project-card reveal">
+      <img class="card-img" src="assets/neuronet.png" alt="Neuronet Prototype"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">🧠</div>
+
       <div class="card-body">
         <div class="card-tag">Concept App</div>
         <div class="card-title">Neuronet Prototype</div>
         <div class="card-desc">An experimental social network prototype for the neurotech community.</div>
+        <div class="card-footer">
+          <a class="action-btn" href="https://saarlively.github.io/neuronet-prototype/" target="_blank" rel="noopener noreferrer">View Project ↗</a>
+        </div>
       </div>
-    </a>
+    </article>
 
-    <a class="project-card reveal" href="https://www.canva.com/design/DAFKWDyTHH0/h5RgsTiQ35zWCh2IiiebSA/view" target="_blank">
-      <img class="card-img" src="assets/neurorights.png" alt="Neurotechnology Market Analysis">
+    <article class="project-card reveal">
+      <img class="card-img" src="assets/neurorights.png" alt="Neurotechnology Market Analysis"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="card-img-placeholder" style="display:none">📄</div>
+
       <div class="card-body">
         <div class="card-tag">Neurorights Foundation</div>
         <div class="card-title">Neurotechnology Market Analysis</div>
         <div class="card-desc">Researched and designed a market landscape analysis covering implantable and non-implantable BCIs.</div>
+        <div class="card-footer">
+          <a class="action-btn" href="https://www.canva.com/design/DAFKWDyTHH0/h5RgsTiQ35zWCh2IiiebSA/view" target="_blank" rel="noopener noreferrer">View Project ↗</a>
+        </div>
       </div>
-    </a>
-
+    </article>
 
   </div>
 
-  <!-- Brand / Commerce (NO images) -->
+  <!-- NO images: websites -->
   <div class="cards-2col" style="margin-top:40px;">
 
-    <a class="project-card reveal" href="https://www.galit-levi.com/" target="_blank">
+    <article class="project-card reveal">
       <div class="card-body">
-        <div class="card-tag">Web Design and Development - E-Commerce Site</div>
-        <div class="card-desc">Luxury bridal & couture website build, Product editing, theme creation.</div>
+        <div class="card-tag">Client Website · E-Commerce</div>
+        <div class="card-title">Galit Levi</div>
+        <div class="card-desc">Luxury bridal & couture website build — theme customization, product editing, and visual merchandising.</div>
+        <div class="card-footer">
+          <a class="action-btn" href="https://www.galit-levi.com/" target="_blank" rel="noopener noreferrer">View Website ↗</a>
+        </div>
       </div>
-    </a>
+    </article>
 
-    <a class="project-card reveal" href="https://kissesandmartini.com/" target="_blank">
+    <article class="project-card reveal">
       <div class="card-body">
-        <div class="card-tag">Web Design and Development - E-Commerce Site </div>
-        <div class="card-desc">Fashion brand complete Shopify theme creation and design</div>
+        <div class="card-tag">E-Commerce · Shopify</div>
+        <div class="card-title">Kisses & Martini</div>
+        <div class="card-desc">Designed and built a custom Shopify theme for a fashion brand — layout, typography, and storefront UX.</div>
+        <div class="card-footer">
+          <a class="action-btn" href="https://kissesandmartini.com/" target="_blank" rel="noopener noreferrer">View Website ↗</a>
+        </div>
       </div>
-    </a>
+    </article>
 
   </div>
 </section>
+
+<div class="divider"></div>
 
 <!-- ABOUT -->
 <section class="section" id="about">
@@ -545,7 +526,7 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
   <div class="about-grid">
     <div class="about-body reveal">
       <p>I enjoy working at the intersection of neuroscience, AI systems, and product experience. My background spans UX research, 0→1 product design, and spatial computing.</p>
-      <p>I currently the lead product experience at Sages and am also the co-founder of NeuroNYC.</p>
+      <p>I currently lead product experience at Sages and am also the co-founder of NeuroNYC.</p>
 
       <div class="about-hl">
         <div class="about-hl-item">
@@ -581,7 +562,6 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
         </ul>
       </div>
 
-          <div class="skills-stack reveal">
       <div class="skill-card">
         <div class="skill-card-title">Development</div>
         <ul>
@@ -591,140 +571,144 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
           <li>R</li>
         </ul>
       </div>
-            
+
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <div class="contact-section" id="contact">
-<div class="contact-inner">
-<div class="reveal">
-<h2 class="contact-title">Let's work<br><span class="cyan">together.</span></h2>
-</div>
-<div class="contact-links reveal">
-<a class="contact-link" href="mailto:saarlively1@gmail.com"><span class="cl-label">Email</span><span class="cl-value">saarlively1@gmail.com</span><span class="cl-arrow">↗</span></a>
-<a class="contact-link" href="https://www.linkedin.com/in/saar-belle-lively/"><span class="cl-label">LinkedIn</span><span class="cl-value">View Profile</span><span class="cl-arrow">↗</span></a>
-</div>
-</div>
+  <div class="contact-inner">
+    <div class="reveal">
+      <h2 class="contact-title">Let's work<br><span class="cyan">together.</span></h2>
+    </div>
+    <div class="contact-links reveal">
+      <a class="contact-link" href="mailto:saarlively1@gmail.com">
+        <span class="cl-label">Email</span><span class="cl-value">saarlively1@gmail.com</span><span class="cl-arrow">↗</span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/saar-belle-lively/" target="_blank" rel="noopener noreferrer">
+        <span class="cl-label">LinkedIn</span><span class="cl-value">View Profile</span><span class="cl-arrow">↗</span>
+      </a>
+    </div>
+  </div>
 </div>
 
 <footer>
-<span>© 2026 — Saar</span>
-<span>UX Research · Design · Neurotech</span>
+  <span>© 2026 — Saar</span>
+  <span>UX Research · Design · Neurotech</span>
 </footer>
 
 <script>
 /* ── NEURON BACKGROUND ── */
 (function() {
-var canvas = document.getElementById('neuro-bg');
-var ctx = canvas.getContext('2d', { alpha: true });
+  var canvas = document.getElementById('neuro-bg');
+  var ctx = canvas.getContext('2d', { alpha: true });
 
-var W = 0, H = 0, DPR = 1;
-var nodes = [];
-var mouse = { x: -9999, y: -9999 };
+  var W = 0, H = 0, DPR = 1;
+  var nodes = [];
+  var mouse = { x: -9999, y: -9999 };
 
-function rnd(a, b) { return Math.random() * (b - a) + a; }
+  function rnd(a, b) { return Math.random() * (b - a) + a; }
 
-function resize() {
-DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-W = window.innerWidth;
-H = window.innerHeight;
-canvas.width = Math.floor(W * DPR);
-canvas.height = Math.floor(H * DPR);
-canvas.style.width = W + 'px';
-canvas.style.height = H + 'px';
-ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-build();
-}
+  function resize() {
+    DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    build();
+  }
 
-function build() {
-nodes = [];
-var density = Math.min(90, Math.max(38, Math.floor((W * H) / 22000)));
-for (var i = 0; i < density; i++) {
-nodes.push({
-x: rnd(0, W),
-y: rnd(0, H),
-vx: rnd(-0.18, 0.18),
-vy: rnd(-0.12, 0.12),
-r: rnd(1.1, 2.4),
-a: rnd(0.12, 0.35)
-});
-}
-}
+  function build() {
+    nodes = [];
+    var density = Math.min(90, Math.max(38, Math.floor((W * H) / 22000)));
+    for (var i = 0; i < density; i++) {
+      nodes.push({
+        x: rnd(0, W),
+        y: rnd(0, H),
+        vx: rnd(-0.18, 0.18),
+        vy: rnd(-0.12, 0.12),
+        r: rnd(1.1, 2.4),
+        a: rnd(0.12, 0.35)
+      });
+    }
+  }
 
-function draw() {
-ctx.clearRect(0, 0, W, H);
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
 
-var g = ctx.createRadialGradient(W * 0.6, H * 0.2, 0, W * 0.6, H * 0.2, Math.max(W, H));
-g.addColorStop(0, 'rgba(160,176,196,0.05)');
-g.addColorStop(1, 'rgba(0,0,0,0)');
-ctx.fillStyle = g;
-ctx.fillRect(0, 0, W, H);
+    var g = ctx.createRadialGradient(W * 0.6, H * 0.2, 0, W * 0.6, H * 0.2, Math.max(W, H));
+    g.addColorStop(0, 'rgba(160,176,196,0.05)');
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
 
-var maxD = 185;
-for (var i = 0; i < nodes.length; i++) {
-var ni = nodes[i];
-for (var j = i + 1; j < nodes.length; j++) {
-var nj = nodes[j];
-var dx = ni.x - nj.x;
-var dy = ni.y - nj.y;
-var d = Math.sqrt(dx * dx + dy * dy);
-if (d < maxD) {
-var t = 1 - d / maxD;
-var alpha = 0.18 * t * Math.min(ni.a + nj.a, 0.75);
-ctx.strokeStyle = 'rgba(160,176,196,' + alpha.toFixed(3) + ')';
-ctx.lineWidth = 1;
-ctx.beginPath();
-ctx.moveTo(ni.x, ni.y);
-ctx.lineTo(nj.x, nj.y);
-ctx.stroke();
-}
-}
+    var maxD = 185;
+    for (var i = 0; i < nodes.length; i++) {
+      var ni = nodes[i];
+      for (var j = i + 1; j < nodes.length; j++) {
+        var nj = nodes[j];
+        var dx = ni.x - nj.x;
+        var dy = ni.y - nj.y;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d < maxD) {
+          var t = 1 - d / maxD;
+          var alpha = 0.18 * t * Math.min(ni.a + nj.a, 0.75);
+          ctx.strokeStyle = 'rgba(160,176,196,' + alpha.toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(ni.x, ni.y);
+          ctx.lineTo(nj.x, nj.y);
+          ctx.stroke();
+        }
+      }
 
-var mdx = ni.x - mouse.x;
-var mdy = ni.y - mouse.y;
-var md = Math.sqrt(mdx * mdx + mdy * mdy);
-if (md < 140) {
-ni.vx += (mdx / (md + 0.001)) * 0.0008;
-ni.vy += (mdy / (md + 0.001)) * 0.0008;
-}
-}
+      var mdx = ni.x - mouse.x;
+      var mdy = ni.y - mouse.y;
+      var md = Math.sqrt(mdx * mdx + mdy * mdy);
+      if (md < 140) {
+        ni.vx += (mdx / (md + 0.001)) * 0.0008;
+        ni.vy += (mdy / (md + 0.001)) * 0.0008;
+      }
+    }
 
-for (var k = 0; k < nodes.length; k++) {
-var n = nodes[k];
-ctx.beginPath();
-ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-ctx.fillStyle = 'rgba(244,245,247,' + (n.a * 0.82).toFixed(3) + ')';
-ctx.fill();
+    for (var k = 0; k < nodes.length; k++) {
+      var n = nodes[k];
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(244,245,247,' + (n.a * 0.82).toFixed(3) + ')';
+      ctx.fill();
 
-n.x += n.vx;
-n.y += n.vy;
-if (n.x < -20) n.x = W + 20;
-if (n.x > W + 20) n.x = -20;
-if (n.y < -20) n.y = H + 20;
-if (n.y > H + 20) n.y = -20;
-n.vx *= 0.996;
-n.vy *= 0.996;
-}
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < -20) n.x = W + 20;
+      if (n.x > W + 20) n.x = -20;
+      if (n.y < -20) n.y = H + 20;
+      if (n.y > H + 20) n.y = -20;
+      n.vx *= 0.996;
+      n.vy *= 0.996;
+    }
 
-requestAnimationFrame(draw);
-}
+    requestAnimationFrame(draw);
+  }
 
-window.addEventListener('resize', resize);
-window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
-window.addEventListener('mouseleave', function() { mouse.x = -9999; mouse.y = -9999; });
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseleave', function() { mouse.x = -9999; mouse.y = -9999; });
 
-resize();
-draw();
+  resize();
+  draw();
 })();
 
 /* ── SCROLL REVEAL ── */
 var reveals = document.querySelectorAll('.reveal');
 var obs = new IntersectionObserver(function(entries) {
-entries.forEach(function(e, i) {
-if (e.isIntersecting) setTimeout(function() { e.target.classList.add('visible'); }, i * 65);
-});
+  entries.forEach(function(e, i) {
+    if (e.isIntersecting) setTimeout(function() { e.target.classList.add('visible'); }, i * 65);
+  });
 }, { threshold: 0.06 });
 reveals.forEach(function(el) { obs.observe(el); });
 </script>
