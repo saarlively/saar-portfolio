@@ -4,49 +4,177 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sightful — Case Studies</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --bg:#0b0c10; --panel:rgba(18,21,33,.60);
-  --text:rgba(244,245,247,.92); --muted:rgba(244,245,247,.65);
-  --border:rgba(255,255,255,.10); --accent:#a0b0c4;
+  --bg:#0b0c10;
+  --text:rgba(244,245,247,.92);
+  --muted:rgba(244,245,247,.65);
+  --border:rgba(255,255,255,.10);
+  --accent:#a0b0c4;
+
   --serif:'Cormorant Garamond', serif;
-  --body:'Instrument Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  --mono:'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --body:'Instrument Sans', system-ui, sans-serif;
+  --mono:'DM Mono', monospace;
 }
+
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.75}
-a{color:inherit;text-decoration:none}
-nav{position:sticky;top:0;z-index:10;background:rgba(11,12,16,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:1040px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
-.brand{font-family:var(--serif);font-weight:700;letter-spacing:.06em;color:var(--accent)}
-.links{display:flex;gap:18px;font-size:14px;color:rgba(244,245,247,.62)}
-.wrap{max-width:1040px;margin:0 auto;padding:56px 24px 92px}
-.kicker{font-family:var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-size:10px;margin-bottom:14px}
-h1{font-family:var(--serif);font-size:64px;line-height:1.02;letter-spacing:-.01em;margin-bottom:14px}
-.sub{color:var(--muted);font-size:16px;max-width:860px}
-.meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
-.pill{border:1px solid var(--border);background:rgba(0,0,0,.18);border-radius:999px;padding:8px 12px;font-size:12px;color:rgba(244,245,247,.78)}
-.section{margin-top:56px}
-.h2{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.card{border:1px solid var(--border);border-radius:22px;padding:22px;background:linear-gradient(180deg, rgba(18,21,33,.62), rgba(14,16,22,.55))}
-p{color:rgba(244,245,247,.72);font-size:15px}
-ul{margin-top:12px;padding-left:18px;color:rgba(244,245,247,.72)}
-li{margin:6px 0}
-.quote{margin-top:14px;padding:16px 18px;border-left:2px solid rgba(195,204,214,.30);color:rgba(244,245,247,.72)}
-.grid{margin-top:40px;display:grid;grid-template-columns:1fr;gap:16px}
-.item{border:1px solid var(--border);border-radius:20px;padding:22px;display:flex;justify-content:space-between;align-items:center;transition:transform .2s,border-color .2s;background:rgba(0,0,0,.10)}
-.item:hover{transform:translateY(-2px);border-color:rgba(195,204,214,.32)}
-.item .tag{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
-.item .title{font-family:var(--serif);font-size:28px;line-height:1.1;margin-top:6px}
-.item .desc{color:var(--muted);font-size:14px;margin-top:6px}
-.footer{margin-top:64px;border-top:1px solid var(--border);padding-top:18px;color:rgba(244,245,247,.45);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
-@media(max-width:700px){h1{font-size:44px}}
+a{text-decoration:none;color:inherit}
+
+nav{
+  position:sticky;
+  top:0;
+  background:rgba(11,12,16,.78);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1040px;
+  margin:0 auto;
+  padding:18px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.brand{
+  font-family:var(--serif);
+  font-weight:700;
+  letter-spacing:.06em;
+  color:var(--accent);
+}
+.links{
+  display:flex;
+  gap:18px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.wrap{
+  max-width:1040px;
+  margin:0 auto;
+  padding:56px 24px 92px;
+}
+
+.kicker{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:14px;
+}
+
+h1{
+  font-family:var(--serif);
+  font-size:64px;
+  margin-bottom:14px;
+}
+
+.sub{
+  color:var(--muted);
+  font-size:16px;
+  max-width:820px;
+}
+
+.section{margin-top:70px}
+
+.section-title{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+
+.grid{
+  display:grid;
+  gap:20px;
+}
+
+.item{
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:28px;
+  background:rgba(0,0,0,.10);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:transform .2s ease, border-color .2s ease;
+}
+.item:hover{
+  transform:translateY(-3px);
+  border-color:rgba(195,204,214,.30);
+}
+
+.item .tag{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+.item .title{
+  font-family:var(--serif);
+  font-size:30px;
+  margin-top:8px;
+}
+.item .desc{
+  font-size:14px;
+  color:var(--muted);
+  margin-top:6px;
+}
+.arrow{
+  font-size:20px;
+  color:rgba(244,245,247,.55);
+}
+
+/* PRIVATE ITEMS */
+.item.private{
+  opacity:.6;
+  cursor:not-allowed;
+}
+.item.private:hover{
+  transform:none;
+  border-color:var(--border);
+}
+
+.private-badge{
+  margin-top:10px;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(244,245,247,.55);
+}
+.private-badge::before{
+  content:"🔒 ";
+}
+
+.footer{
+  margin-top:90px;
+  border-top:1px solid var(--border);
+  padding-top:18px;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(244,245,247,.45);
+}
+
+@media(max-width:700px){
+  h1{font-size:44px}
+}
 </style>
 </head>
+
 <body>
+
 <nav>
   <div class="nav-inner">
     <a class="brand" href="index.html">SAAR</a>
@@ -58,69 +186,79 @@ li{margin:6px 0}
 </nav>
 
 <main class="wrap">
+
   <div class="kicker">Sightful · Spatial Computing</div>
   <h1>Sightful Case Studies</h1>
-  <p class="sub">A set of UX research studies spanning hardware comfort, spatial OS usability, experimental gesture testing, onboarding redesign, enterprise longitudinal beta testing, and productivity analysis.</p>
-  <div class="meta"><span class="pill">Role: Lead UX Researcher</span>
-<span class="pill">Methods:Hardware and Software Usability Testing, Semi-Structured User Interviews, Surveys</span>
-<span class="pill">Tools: Dovetail · OBS · Mixpanel · Qualtrics · Respondent · Prolific</span></div>
-  
-<section class="section">
-  <div class="h2">Case studies</div>
-  <div class="grid">
-    
-<a class="item" href="sightful-hardware.html">
-  <div>
-    <div class="tag">Hardware</div>
-    <div class="title">Hardware Look & Feel Testing</div>
-  </div>
-  <div style="color:rgba(244,245,247,.55);font-size:18px">↗</div>
-</a>
+  <p class="sub">
+    UX research across spatial computing hardware and operating systems — from early prototype testing to enterprise longitudinal studies and productivity analysis.
+  </p>
 
-<a class="item" href="sightful-spatial-os.html">
-  <div>
-    <div class="tag">Software UX Research - Spatial OS</div>
-    <div class="title">Spatial OS Onboarding Usability</div>
-  </div>
-  <div style="color:rgba(244,245,247,.55);font-size:18px">↗</div>
-</a>
+  <!-- FEATURED -->
+  <section class="section">
+    <div class="section-title">Featured Case Studies</div>
+    <div class="grid">
 
-<a class="item" href="sightful-woz-gestures.html">
-  <div>
-    <div class="tag">Experimental</div>
-    <div class="private-badge">Private case study</div>
-    <div class="title">Wizard-of-Oz Gesture Testing</div>
-    <div class="desc">Tested potential addition of hand gesture control before engineering.</div>
-  </div>
-  <div style="color:rgba(244,245,247,.55);font-size:18px">↗</div>
-</a>
+      <a class="item" href="sightful-hardware.html">
+        <div>
+          <div class="tag">Hardware Research</div>
+          <div class="title">Hardware Look & Feel Testing</div>
+          <div class="desc">Evaluated comfort, perceived quality, and physical usability of Gen1 prototype.</div>
+        </div>
+        <div class="arrow">↗</div>
+      </a>
 
+      <a class="item" href="sightful-spatial-os.html">
+        <div>
+          <div class="tag">Spatial OS Research</div>
+          <div class="title">Spatial OS Onboarding Usability</div>
+          <div class="desc">Tested first-time setup, system discoverability, and onboarding clarity.</div>
+        </div>
+        <div class="arrow">↗</div>
+      </a>
 
-<a class="item" href="sightful-enterprise-beta.html">
-  <div>
-    <div class="tag">Enterprise</div>
-      <div class="private-badge">Private case study</div>
-    <div class="title">Longitudinal Enterprise Beta Testing</div>
-    <div class="desc">Diary studies + weekly interviews to measure real-world value over time.</div>
-  </div>
-  <div style="color:rgba(244,245,247,.55);font-size:18px">↗</div>
-</a>
+    </div>
+  </section>
 
-<a class="item" href="sightful-productivity-analysis.html">
-  <div>
-    <div class="tag">Analysis</div>
-      <div class="private-badge">Private case study</div>
-    <div class="title">Productivity Analysis</div>
-    <div class="desc">Cognitive load, task switching, fatigue—dual monitors vs AR setups.</div>
-  </div>
-  <div style="color:rgba(244,245,247,.55);font-size:18px">↗</div>
-</a>
-  </div>
-</section>
+  <!-- ADDITIONAL / PRIVATE -->
+  <section class="section">
+    <div class="section-title">Additional Research (Private)</div>
+    <div class="grid">
 
+      <div class="item private">
+        <div>
+          <div class="tag">Experimental</div>
+          <div class="private-badge">Private case study</div>
+          <div class="title">Wizard-of-Oz Gesture Testing</div>
+          <div class="desc">Evaluated potential hand gesture interactions prior to engineering implementation.</div>
+        </div>
+        <div class="arrow">↗</div>
+      </div>
 
+      <div class="item private">
+        <div>
+          <div class="tag">Enterprise</div>
+          <div class="private-badge">Private case study</div>
+          <div class="title">Longitudinal Enterprise Beta Testing</div>
+          <div class="desc">Measured long-term product value through diary studies and weekly interviews.</div>
+        </div>
+        <div class="arrow">↗</div>
+      </div>
+
+      <div class="item private">
+        <div>
+          <div class="tag">Productivity Analysis</div>
+          <div class="private-badge">Private case study</div>
+          <div class="title">Cognitive Load & Productivity Study</div>
+          <div class="desc">Compared task switching, fatigue, and workload across spatial vs traditional setups.</div>
+        </div>
+        <div class="arrow">↗</div>
+      </div>
+
+    </div>
+  </section>
 
   <div class="footer">© 2026 — Saar</div>
+
 </main>
 </body>
 </html>
