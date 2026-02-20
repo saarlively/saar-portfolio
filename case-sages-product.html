@@ -143,12 +143,12 @@ ul{
 
 li{margin:6px 0}
 
-/* GALLERY — 1 per row, bigger */
+/* GALLERY */
 .gallery{
   margin-top:14px;
   display:grid;
-  grid-template-columns: 1fr;   /* ✅ 1 item per row */
-  gap:22px;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:18px;
 }
 
 .shot{
@@ -159,12 +159,28 @@ li{margin:6px 0}
   transition:transform .25s ease, border-color .25s ease;
 }
 
+.shot:hover{
+  transform:translateY(-4px);
+  border-color:rgba(160,176,196,.35);
+}
+
 .shot img{
   width:100%;
-  aspect-ratio: 16 / 7;  /* ✅ bigger/taller than 16/10; try 16/8 if you want even taller */
+  aspect-ratio:16 / 10;
   object-fit:cover;
-  object-position: center;
   display:block;
+}
+
+.cap{
+  padding:12px;
+  color:rgba(244,245,247,.58);
+  font-size:12px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .gallery{grid-template-columns:1fr}
 }
 
 /* FOOTER */
