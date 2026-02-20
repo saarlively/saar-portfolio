@@ -1,32 +1,4 @@
-<body style="display:none;">
-<script>
-  const PASSWORD = "neuro2026";  // change this
 
-  const entered = prompt("Enter password to view this page:");
-
-  if (entered === PASSWORD) {
-    document.body.style.display = "block";
-  } else {
-    document.body.innerHTML = `
-      <div style="
-        height:100vh;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        background:#0b0c10;
-        color:white;
-        font-family:Arial;
-        text-align:center;
-      ">
-        <div>
-          <h1 style="font-size:28px;margin-bottom:12px;">Access Denied</h1>
-          <p style="opacity:.6;">Incorrect password.</p>
-        </div>
-      </div>
-    `;
-    document.body.style.display = "block";
-  }
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
