@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sages — MVP Product Experience & UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c10; --panel:rgba(18,21,33,.60);
+      --text:rgba(244,245,247,.92); --muted:rgba(244,245,247,.65);
+      --border:rgba(255,255,255,.10); --accent:#a0b0c4;
+      --serif:'Cormorant Garamond', serif;
+      --body:'Instrument Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --mono:'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.75}
+    a{color:inherit;text-decoration:none}
+    nav{position:sticky;top:0;z-index:10;background:rgba(11,12,16,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:1040px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+    .brand{font-family:var(--serif);font-weight:700;letter-spacing:.06em;color:var(--accent)}
+    .links{display:flex;gap:18px;font-size:14px;color:rgba(244,245,247,.62)}
+    .wrap{max-width:1040px;margin:0 auto;padding:56px 24px 92px}
+    .kicker{font-family:var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-size:10px;margin-bottom:14px}
+    h1{font-family:var(--serif);font-size:64px;line-height:1.02;letter-spacing:-.01em;margin-bottom:14px}
+    .sub{color:var(--muted);font-size:16px;max-width:860px}
+    .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+    .pill{border:1px solid var(--border);background:rgba(0,0,0,.18);border-radius:999px;padding:8px 12px;font-size:12px;color:rgba(244,245,247,.78)}
+    .section{margin-top:56px}
+    .h2{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+    .card{border:1px solid var(--border);border-radius:22px;padding:22px;background:linear-gradient(180deg, rgba(18,21,33,.62), rgba(14,16,22,.55))}
+    p{color:rgba(244,245,247,.72);font-size:15px}
+    ul{margin-top:12px;padding-left:18px;color:rgba(244,245,247,.72)}
+    li{margin:6px 0}
+    .gallery{margin-top:14px;display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:14px}
+    .shot{border:1px solid var(--border);border-radius:18px;background:rgba(0,0,0,.10);overflow:hidden}
+    .shot img{width:100%;height:auto;display:block}
+    .cap{padding:10px 12px;color:rgba(244,245,247,.58);font-size:12px}
+    .footer{margin-top:64px;border-top:1px solid var(--border);padding-top:18px;color:rgba(244,245,247,.45);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+    @media(max-width:900px){.gallery{grid-template-columns:1fr}}
+    @media(max-width:700px){h1{font-size:44px}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="index.html">SAAR</a>
+      <div class="links">
+        <a href="index.html">← Back</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="kicker">Sages · Product Design</div>
+    <h1>MVP Product Experience & UI</h1>
+    <p class="sub">Early concepts → wireframes → high‑fidelity prototypes for an MVP and fundraising story. Designed core flows and visual system for a trust‑first assistant that uses your memories, learning history, and trusted network to help you decide what to do next.</p>
+
+    <div class="meta">
+      <span class="pill">UX/UI Designer</span>
+      <span class="pill">Visual Designer</span>
+      <span class="pill">UX Researcher</span>
+      <span class="pill">Tools: Figma</span>
+    </div>
+
+    <section class="section">
+      <div class="h2">My role</div>
+      <div class="card">
+        <p>I owned the end‑to‑end product experience — from early exploration and flow definition to UI, component system, and high‑fidelity prototypes used for MVP planning and fundraising.</p>
+        <ul>
+          <li>Defined core journeys (Home, Chat, Results, Onboarding, Sources/Filters)</li>
+          <li>Designed the UI system (type, spacing, colors, components)</li>
+          <li>Built click‑through prototypes for stakeholder reviews and fundraising</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="h2">Design approach</div>
+      <div class="card">
+        <ul>
+          <li>Started with quick sketches and low‑fidelity flows to align on the product promise</li>
+          <li>Iterated into wireframes to validate navigation, mental models, and information hierarchy</li>
+          <li>Moved into a consistent visual system to make the experience feel trustworthy and calm</li>
+          <li>Used prototypes to pressure‑test key moments: “show your work”, sources, and confidence</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="h2">Skills & methods</div>
+      <div class="card">
+        <ul>
+          <li>Wireframing</li>
+          <li>Prototyping</li>
+          <li>Interaction design</li>
+          <li>Design systems & componentization</li>
+          <li>Information architecture</li>
+          <li>Stakeholder reviews & iteration</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="h2">Selected screens</div>
+      <div class="card">
+        <p>High‑fidelity samples from core flows (Home, Chat, Results, Onboarding, and Sources).</p>
+        <div class="gallery">
+          <figure class="shot">
+            <img src="Screenshot%202026-02-19%20at%207.33.48%E2%80%AFPM.png" alt="Sages chat with memory + trust processing" />
+            <figcaption class="cap">Chat: “show your work” (memory + contextual trust)</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="Screenshot%202026-02-19%20at%207.34.34%E2%80%AFPM.png" alt="Sages home screen" />
+            <figcaption class="cap">Home: warm, minimal landing state</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="Screenshot%202026-02-19%20at%207.34.44%E2%80%AFPM.png" alt="Sages chat-based home" />
+            <figcaption class="cap">Home (chat-based): urgency + trusted recommendations</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="Screenshot%202026-02-19%20at%207.35.01%E2%80%AFPM.png" alt="Sages sources and filters home" />
+            <figcaption class="cap">Sources: active inputs + quick suggestions</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="Screenshot%202026-02-19%20at%207.35.32%E2%80%AFPM.png" alt="Sages home and discover" />
+            <figcaption class="cap">Home + Discover: network exploration</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="Screenshot%202026-02-19%20at%207.35.56%E2%80%AFPM.png" alt="Sages results list" />
+            <figcaption class="cap">Results: ranked options + transparent sources</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="Screenshot%202026-02-19%20at%207.36.01%E2%80%AFPM.png" alt="Sages onboarding screens" />
+            <figcaption class="cap">Onboarding: value prop + setup</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <img src="Screenshot%202026-02-19%20at%207.36.28%E2%80%AFPM.png" alt="Sages wireframes overview board" />
+            <figcaption class="cap">Work in progress: wireframes + explorations</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© 2026 — Saar</div>
+  </main>
+</body>
+</html>
