@@ -1,9 +1,14 @@
 <script>
-  var password = "neuro2026";
-  var userInput = prompt("Enter password to access this portfolio:");
-  if (userInput !== password) {
-    document.body.innerHTML = "<h1>Access Denied</h1>";
+(function () {
+  const correctPassword = "neuro2026";
+  const userInput = prompt("Enter password to access this portfolio:");
+
+  if (userInput !== correctPassword) {
+    document.documentElement.innerHTML = "";
+    alert("Access denied.");
+    throw new Error("Unauthorized");
   }
+})();
 </script>
 <!DOCTYPE html>
 <html lang="en">
