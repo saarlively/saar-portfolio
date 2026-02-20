@@ -1,9 +1,12 @@
+<body style="display:none;">
 <script>
   const PASSWORD = "neuro2026";  // change this
 
   const entered = prompt("Enter password to view this page:");
 
-  if (entered !== PASSWORD) {
+  if (entered === PASSWORD) {
+    document.body.style.display = "block";
+  } else {
     document.body.innerHTML = `
       <div style="
         height:100vh;
@@ -21,6 +24,7 @@
         </div>
       </div>
     `;
+    document.body.style.display = "block";
   }
 </script>
 <!DOCTYPE html>
