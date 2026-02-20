@@ -35,6 +35,74 @@ body { background: var(--bg); color: var(--text); font-family: var(--body); font
 ::selection { background: var(--accent); color: var(--bg); }
 #neuro-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
+/* EXTRAS (minimal) */
+.extras-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.extra-card{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.12);
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  display:flex;
+  flex-direction:column;
+  min-height: 150px;
+}
+
+.extra-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(195,204,214,0.30);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.28);
+}
+
+.extra-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.extra-tag{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.extra-title{
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.15;
+  margin-top: 8px;
+}
+
+.extra-desc{
+  color: rgba(244,245,247,0.60);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-top: 8px;
+}
+
+.extra-arrow{
+  color: rgba(244,245,247,0.55);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px){
+  .extras-grid{ grid-template-columns: 1fr; }
+}
 /* NAV */
 nav {
 position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -414,6 +482,53 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 
   </div>
 </section>
+
+  <div class="divider"></div>
+
+<!-- EXTRAS -->
+<section class="section" id="extras">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Extras</span>
+    <h2 class="section-title">Selected Builds</h2>
+  </div>
+
+  <div class="extras-grid">
+    <a class="extra-card reveal" href="https://www.galit-levi.com/" target="_blank" rel="noopener noreferrer">
+      <div class="extra-top">
+        <div>
+          <div class="extra-tag">E-commerce · Brand</div>
+          <div class="extra-title">Galit Levi — Website</div>
+        </div>
+        <div class="extra-arrow">↗</div>
+      </div>
+      <div class="extra-desc">Luxury fashion site build — visual system, layout, and responsive experience.</div>
+    </a>
+
+    <a class="extra-card reveal" href="https://kissesandmartini.com/" target="_blank" rel="noopener noreferrer">
+      <div class="extra-top">
+        <div>
+          <div class="extra-tag">E-commerce · UX</div>
+          <div class="extra-title">Kisses &amp; Martini</div>
+        </div>
+        <div class="extra-arrow">↗</div>
+      </div>
+      <div class="extra-desc">Shop experience — product browsing, merchandising, and conversion-oriented UX.</div>
+    </a>
+
+    <a class="extra-card reveal" href="https://saarlively.github.io/neuronet-prototype/" target="_blank" rel="noopener noreferrer">
+      <div class="extra-top">
+        <div>
+          <div class="extra-tag">Prototype · Concept</div>
+          <div class="extra-title">Neuronet Prototype</div>
+        </div>
+        <div class="extra-arrow">↗</div>
+      </div>
+      <div class="extra-desc">Interactive concept exploring a networked knowledge/product experience.</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
 
 <!-- ABOUT -->
 <section class="section" id="about">
