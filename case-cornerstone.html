@@ -143,39 +143,28 @@ ul{
 
 li{margin:6px 0}
 
-/* GALLERY */
-.gallery{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:18px;
+/* SIMPLE IMAGE (no card, centered, no background) */
+.hero-image{
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.shot{
-  border:1px solid var(--border);
-  border-radius:18px;
-  background:rgba(0,0,0,.10);
-  overflow:hidden;
-  transition:transform .25s ease, border-color .25s ease;
+.hero-image img{
+  width: 100%;
+  max-width: 1200px; /* make bigger here */
+  height: auto;
+  display: block;
 }
 
-.shot:hover{
-  transform:translateY(-4px);
-  border-color:rgba(160,176,196,.35);
-}
-
-.shot img{
-  width:100%;
-  aspect-ratio:16 / 10;
-  object-fit:cover;
-  display:block;
-}
-
-.cap{
-  padding:12px;
-  color:rgba(244,245,247,.58);
-  font-size:12px;
-  border-top:1px solid rgba(255,255,255,.06);
+.hero-caption{
+  margin-top: 16px;
+  font-size: 12px;
+  color: rgba(244,245,247,.55);
+  font-family: var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 /* FOOTER */
@@ -191,10 +180,6 @@ li{margin:6px 0}
 }
 
 /* RESPONSIVE */
-@media(max-width:900px){
-  .gallery{grid-template-columns:1fr}
-}
-
 @media(max-width:700px){
   h1{font-size:44px}
 }
@@ -215,79 +200,71 @@ li{margin:6px 0}
 
 <main class="wrap">
 
-<div class="kicker">Sages · Product Design</div>
-<h1>Research Tool Product Design</h1>
+  <div class="kicker">Sages · Product Design</div>
+  <h1>Research Tool Product Design</h1>
 
-<p class="sub">
-Designed a research tool interface end-to-end. From ealy sketches to prototypes that were used for final development of the tool.
-</p>
+  <p class="sub">
+    Designed a research tool interface end-to-end — from early sketches to prototypes used for final development.
+  </p>
 
-<div class="meta">
-  <span class="pill">Product Designer</span>
-  <span class="pill">UX Researcher</span>
-  <span class="pill">Tools: Figma</span>
-</div>
-
-<section class="section">
-  <div class="h2">My role</div>
-  <div class="card">
-    <p>I owned the end-to-end product design — from early exploration and flow definition to UI, component system, and high-fidelity prototypes used for MVP planning and fundraising.</p>
-    <ul>
-      <li>Defined core journeys for both mobile and desktop versions</li>
-    </ul>
+  <div class="meta">
+    <span class="pill">Product Designer</span>
+    <span class="pill">UX Researcher</span>
+    <span class="pill">Tools: Figma</span>
   </div>
-</section>
 
   <section class="section">
-  <div class="h2">Sketch to final design</div>
-          <figure class="shot">
-        <img src="assets/cornerstone.png" alt="High fidelity core flow">
-      </figure>
+    <div class="h2">My role</div>
+    <div class="card">
+      <p>I owned the end-to-end product design — from early exploration and flow definition to UI, component system, and high-fidelity prototypes used for MVP planning and fundraising.</p>
+      <ul>
+        <li>Defined core journeys for both mobile and desktop versions</li>
+      </ul>
     </div>
-  </div>
   </section>
 
-
-<section class="section">
-  <div class="h2">Design approach</div>
-  <div class="card">
-    <ul>
-      <li>Started with quick sketches and brainstorming sessions with product and research team.</li>
-      <li>The goal was to create a tool that can be used both internally, and as an initial pilot of our MVP product.</li>
-    </ul>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="h2">Selected screens</div>
-  <div class="card">
-    <div class="gallery">
-
-      <figure class="shot">
-        <img src="assets/stonemobile.png" alt="stone mobile">
-        <figcaption class="cap">High-fidelity Mobile Version</figcaption>
-      </figure>
-
-    </div>
-  </div>
-</section>
+  <section class="section">
+    <div class="h2">Sketch to final design</div>
+    <figure class="hero-image">
+      <img src="assets/cornerstone.png" alt="Sketch to final design">
+    </figure>
+  </section>
 
   <section class="section">
-  <div class="h2">Skills & methods</div>
-  <div class="card">
-    <ul>
-      <li>Wireframing</li>
-      <li>Prototyping</li>
-      <li>Interaction design</li>
-      <li>Design systems & componentization</li>
-      <li>Information architecture</li>
-      <li>Stakeholder reviews & iteration</li>
-    </ul>
-  </div>
-</section>
+    <div class="h2">Design approach</div>
+    <div class="card">
+      <ul>
+        <li>Started with quick sketches and brainstorming sessions with product and research team.</li>
+        <li>The goal was to create a tool that can be used both internally, and as an initial pilot of our MVP product.</li>
+      </ul>
+    </div>
+  </section>
 
-<div class="footer">© 2026 — Saar</div>
+  <!-- UPDATED: Selected screens (big, centered, no card) -->
+  <section class="section">
+    <div class="h2">Selected screens</div>
+
+    <div class="hero-image">
+      <img src="assets/stonemobile.png" alt="High-fidelity Mobile Version">
+      <p class="hero-caption">High-fidelity Mobile Version</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="h2">Skills & methods</div>
+    <div class="card">
+      <ul>
+        <li>Wireframing</li>
+        <li>Prototyping</li>
+        <li>Interaction design</li>
+        <li>Design systems & componentization</li>
+        <li>Information architecture</li>
+        <li>Stakeholder reviews & iteration</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer">© 2026 — Saar</div>
 
 </main>
 </body>
