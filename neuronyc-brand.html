@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NeuroNYC — Brand System</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --bg:#0b0c10;
+  --bg2:#0f1118;
+  --bg3:#121521;
+  --card: rgba(18,21,33,0.78);
+  --border: rgba(255,255,255,0.08);
+  --text: rgba(244,245,247,0.92);
+  --muted: rgba(244,245,247,0.62);
+  --muted2: rgba(244,245,247,0.42);
+  --accent: #a0b0c4;
+  --accent2:#c3ccd6;
+
+  --serif: 'Cormorant Garamond', serif;
+  --body: 'Instrument Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  --mono: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+html{ scroll-behavior:smooth; }
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x:hidden;
+}
+#neuro-bg{ position: fixed; inset:0; z-index:0; pointer-events:none; }
+
+nav{
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 20px 56px;
+  background: rgba(11,15,26,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo{
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration:none;
+}
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+}
+.nav-pill{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244,245,247,0.75);
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 10px 12px;
+  border-radius: 999px;
+}
+.nav-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  text-decoration:none;
+  background: rgba(160,176,196,0.12);
+  color: rgba(244,245,247,0.9);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  transition: transform .2s, background .2s, border-color .2s;
+}
+.nav-btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(195,204,214,0.30);
+  background: rgba(160,176,196,0.16);
+}
+
+.wrap{
+  position: relative;
+  z-index: 1;
+  padding: 120px 56px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 56px;
+}
+.eyebrow{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.h1{
+  font-family: var(--serif);
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.sub{
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 58ch;
+}
+.hero-card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 20px;
+}
+.hero-meta{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+.meta-row{
+  display:flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.meta-row:last-child{ border-bottom:none; padding-bottom:0; }
+.meta-k{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244,245,247,0.55);
+}
+.meta-v{ color: rgba(244,245,247,0.86); font-size: 13px; text-align:right; }
+
+.section{
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+.section-title{
+  font-family: var(--serif);
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+.section-desc{
+  color: var(--muted);
+  max-width: 78ch;
+  margin-bottom: 18px;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.grid-3{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card{
+  background: rgba(18,21,33,0.64);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  padding: 18px;
+}
+.card h3{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.card p{
+  color: rgba(244,245,247,0.70);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.mini-note{
+  color: rgba(244,245,247,0.52);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.logo-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.logo-tile{
+  background: rgba(0,0,0,0.10);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  padding: 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height: 130px;
+}
+.logo-tile img{
+  max-width: 100%;
+  max-height: 90px;
+  object-fit: contain;
+  filter: brightness(0.98);
+}
+.logo-cap{
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244,245,247,0.55);
+}
+
+.swatches{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.swatch{
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  overflow:hidden;
+  background: rgba(0,0,0,0.10);
+}
+.swatch-color{
+  height: 84px;
+}
+.swatch-meta{
+  padding: 12px 12px 10px;
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+}
+.hex{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  color: rgba(244,245,247,0.80);
+}
+.use{
+  font-size: 12px;
+  color: rgba(244,245,247,0.52);
+}
+
+.type-sample{
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+}
+.type-row{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.10);
+  border-radius: 18px;
+  padding: 14px 16px;
+}
+.type-label{
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244,245,247,0.60);
+  margin-bottom: 8px;
+}
+.type-title{
+  font-family: var(--serif);
+  font-size: 34px;
+  line-height: 1.1;
+}
+.type-subtitle{
+  font-family: var(--body);
+  font-size: 18px;
+  color: rgba(244,245,247,0.82);
+}
+.type-body{
+  font-family: var(--body);
+  color: rgba(244,245,247,0.68);
+  font-size: 14px;
+  line-height: 1.85;
+  max-width: 74ch;
+}
+
+.app-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.app-shot{
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  overflow:hidden;
+  background: rgba(0,0,0,0.12);
+}
+.app-shot img{
+  width:100%;
+  height: 280px;
+  object-fit: cover;
+  display:block;
+  filter: brightness(0.95) saturate(0.92);
+}
+.app-shot .cap{
+  padding: 12px 14px 14px;
+  color: rgba(244,245,247,0.62);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.footer{
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  display:flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: rgba(244,245,247,0.45);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* reveal */
+.reveal{ opacity:0; transform: translateY(16px); transition: opacity .6s, transform .6s; }
+.reveal.visible{ opacity:1; transform: translateY(0); }
+
+/* responsive */
+@media (max-width: 900px){
+  nav{ padding: 16px 24px; }
+  .wrap{ padding: 110px 24px 70px; }
+  .hero{ grid-template-columns: 1fr; }
+  .grid-2{ grid-template-columns: 1fr; }
+  .grid-3{ grid-template-columns: 1fr; }
+  .logo-grid{ grid-template-columns: 1fr; }
+  .swatches{ grid-template-columns: 1fr 1fr; }
+  .app-grid{ grid-template-columns: 1fr; }
+  .app-shot img{ height: 220px; }
+}
+</style>
+</head>
+
+<body>
+<canvas id="neuro-bg"></canvas>
+
+<nav>
+  <a class="nav-logo" href="index.html">SAAR</a>
+  <div class="nav-right">
+    <span class="nav-pill">NeuroNYC — Brand System</span>
+    <a class="nav-btn" href="https://neuro-nyc.org/" target="_blank" rel="noopener noreferrer">View Website ↗</a>
+    <a class="nav-btn" href="index.html#design">Back to Work ←</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="hero reveal">
+    <div>
+      <div class="eyebrow">Brand · Identity · Web</div>
+      <h1 class="h1">NeuroNYC Brand System</h1>
+      <p class="sub">
+        A minimalist identity for a NYC neurotech community — designed to feel modern, credible, and human.
+        The system includes a flexible logo suite, restrained color architecture, typography guidelines, and web-ready assets.
+      </p>
+    </div>
+
+    <aside class="hero-card">
+      <div class="hero-meta">
+        <div class="meta-row">
+          <div class="meta-k">Role</div>
+          <div class="meta-v">Brand + Web Design</div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-k">Deliverables</div>
+          <div class="meta-v">Logo suite · Colors · Type · Web assets</div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-k">Tools</div>
+          <div class="meta-v">Figma · Canva · Web</div>
+        </div>
+      </div>
+      <div class="mini-note">Tip: keep this page tight — it’s meant to read like a polished mini brand guide.</div>
+    </aside>
+  </section>
+
+  <!-- BRAND PRINCIPLES -->
+  <section class="section reveal" id="principles">
+    <h2 class="section-title">Principles</h2>
+    <p class="section-desc">A quick “why” behind the system — short and confident.</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Modern Credibility</h3>
+        <p>Clean geometry and restrained contrast so the brand reads as serious and investor-friendly.</p>
+      </div>
+      <div class="card">
+        <h3>NYC + Neural</h3>
+        <p>A split-brain mark that balances city identity with a network motif — community and connection.</p>
+      </div>
+      <div class="card">
+        <h3>Scalable System</h3>
+        <p>Assets designed to work across web, event graphics, social, and partner co-branding.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO SUITE -->
+  <section class="section reveal" id="logos">
+    <h2 class="section-title">Logo Suite</h2>
+    <p class="section-desc">
+      Primary lockups and icon versions for light/dark backgrounds. Add/replace filenames below to match your actual exports.
+    </p>
+
+    <div class="logo-grid">
+      <div>
+        <div class="logo-tile">
+          <img src="assets/NeuroNYC_Icononly.png" alt="NeuroNYC icon" onerror="this.remove(); this.parentElement.textContent='Add: assets/NeuroNYC_Icononly.png';">
+        </div>
+        <div class="logo-cap">Icon-only</div>
+      </div>
+
+      <div>
+        <div class="logo-tile">
+          <img src="assets/NeuroNYC_BlackTransparent.png" alt="NeuroNYC black lockup" onerror="this.remove(); this.parentElement.textContent='Add a black lockup PNG in /assets';">
+        </div>
+        <div class="logo-cap">Primary lockup (dark)</div>
+      </div>
+
+      <div>
+        <div class="logo-tile">
+          <img src="assets/NeuroNYC_White.png" alt="NeuroNYC white lockup" onerror="this.remove(); this.parentElement.textContent='Add a white lockup PNG in /assets';">
+        </div>
+        <div class="logo-cap">Primary lockup (light)</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:18px;">
+      <div class="card">
+        <h3>Usage</h3>
+        <p>Use the primary lockup for website headers, sponsors, and event signage. Use icon-only for social avatars, favicons, and small placements.</p>
+      </div>
+      <div class="card">
+        <h3>Spacing</h3>
+        <p>Maintain clear space around the mark (at least the width of one node dot). Avoid outlines, heavy shadows, or recolors outside the palette.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLORS -->
+  <section class="section reveal" id="colors">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Based on your exports (from your screenshot). Simple, cool, and versatile.</p>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#02579b;"></div>
+        <div class="swatch-meta">
+          <div class="hex">#02579B</div>
+          <div class="use">Primary blue</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4181b4;"></div>
+        <div class="swatch-meta">
+          <div class="hex">#4181B4</div>
+          <div class="use">Secondary blue</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#81abcd;"></div>
+        <div class="swatch-meta">
+          <div class="hex">#81ABCD</div>
+          <div class="use">Soft highlight</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#000000;"></div>
+        <div class="swatch-meta">
+          <div class="hex">#000000</div>
+          <div class="use">Neutral (dark)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mini-note">If you want to be extra polished: add “background white” (#FFFFFF) as a fifth swatch when used on light materials.</div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section class="section reveal" id="type">
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">A modern sans for clarity + a classic serif for editorial energy (optional). Replace text below with your actual brand fonts if different.</p>
+
+    <div class="type-sample">
+      <div class="type-row">
+        <div class="type-label">Title</div>
+        <div class="type-title">NeuroNYC</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-label">Subtitle</div>
+        <div class="type-subtitle">Building NYC’s Neurotechnology Ecosystem</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-label">Body</div>
+        <div class="type-body">
+          NeuroNYC connects founders, researchers, investors, and builders through high-signal events, community programs, and partnerships.
+          The typography system prioritizes readability and a modern, clinical clarity.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="section reveal" id="applications">
+    <h2 class="section-title">Applications</h2>
+    <p class="section-desc">
+      Show a couple real uses so it feels like “brand in the wild.” Add screenshots to /assets and update filenames below.
+    </p>
+
+    <div class="app-grid">
+      <div class="app-shot">
+        <img src="assets/neuronyc-website.jpg" alt="NeuroNYC website screenshot"
+             onerror="this.remove(); this.parentElement.querySelector('.cap').textContent='Add screenshot: assets/neuronyc-website.jpg';">
+        <div class="cap">Website — homepage / hero</div>
+      </div>
+
+      <div class="app-shot">
+        <img src="assets/neuronyc-social.jpg" alt="NeuroNYC social tile"
+             onerror="this.remove(); this.parentElement.querySelector('.cap').textContent='Add screenshot: assets/neuronyc-social.jpg';">
+        <div class="cap">Social / event tile — consistent spacing + palette</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section class="section reveal" id="deliverables">
+    <h2 class="section-title">Deliverables</h2>
+    <p class="section-desc">A quick list to make recruiters instantly “get” scope.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Identity</h3>
+        <p>Logo suite (icon, lockups, black/white variants), spacing guidelines, and scalable usage rules.</p>
+      </div>
+      <div class="card">
+        <h3>Brand System</h3>
+        <p>Palette, typography, layout motifs (network lines / nodes), and templates for web + event materials.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div>© 2026 — Saar</div>
+    <div>NeuroNYC — Brand System</div>
+  </div>
+
+</main>
+
+<script>
+/* ── NEURON BACKGROUND ── */
+(function() {
+  var canvas = document.getElementById('neuro-bg');
+  var ctx = canvas.getContext('2d', { alpha: true });
+
+  var W = 0, H = 0, DPR = 1;
+  var nodes = [];
+  var mouse = { x: -9999, y: -9999 };
+
+  function rnd(a, b) { return Math.random() * (b - a) + a; }
+
+  function resize() {
+    DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    build();
+  }
+
+  function build() {
+    nodes = [];
+    var density = Math.min(90, Math.max(38, Math.floor((W * H) / 22000)));
+    for (var i = 0; i < density; i++) {
+      nodes.push({
+        x: rnd(0, W),
+        y: rnd(0, H),
+        vx: rnd(-0.18, 0.18),
+        vy: rnd(-0.12, 0.12),
+        r: rnd(1.1, 2.4),
+        a: rnd(0.12, 0.35)
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    var g = ctx.createRadialGradient(W * 0.6, H * 0.2, 0, W * 0.6, H * 0.2, Math.max(W, H));
+    g.addColorStop(0, 'rgba(160,176,196,0.05)');
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    var maxD = 185;
+    for (var i = 0; i < nodes.length; i++) {
+      var ni = nodes[i];
+      for (var j = i + 1; j < nodes.length; j++) {
+        var nj = nodes[j];
+        var dx = ni.x - nj.x;
+        var dy = ni.y - nj.y;
+        var d = Math.sqrt(dx*dx + dy*dy);
+        if (d < maxD) {
+          var t = 1 - d / maxD;
+          var alpha = 0.18 * t * Math.min(ni.a + nj.a, 0.75);
+          ctx.strokeStyle = 'rgba(160,176,196,' + alpha.toFixed(3) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(ni.x, ni.y);
+          ctx.lineTo(nj.x, nj.y);
+          ctx.stroke();
+        }
+      }
+
+      var mdx = ni.x - mouse.x;
+      var mdy = ni.y - mouse.y;
+      var md = Math.sqrt(mdx*mdx + mdy*mdy);
+      if (md < 140) {
+        ni.vx += (mdx / (md + 0.001)) * 0.0008;
+        ni.vy += (mdy / (md + 0.001)) * 0.0008;
+      }
+    }
+
+    for (var k = 0; k < nodes.length; k++) {
+      var n = nodes[k];
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(244,245,247,' + (n.a * 0.82).toFixed(3) + ')';
+      ctx.fill();
+
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < -20) n.x = W + 20;
+      if (n.x > W + 20) n.x = -20;
+      if (n.y < -20) n.y = H + 20;
+      if (n.y > H + 20) n.y = -20;
+      n.vx *= 0.996;
+      n.vy *= 0.996;
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', function(e){ mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseleave', function(){ mouse.x = -9999; mouse.y = -9999; });
+
+  resize();
+  draw();
+})();
+
+/* ── SCROLL REVEAL ── */
+var reveals = document.querySelectorAll('.reveal');
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e, i){
+    if (e.isIntersecting) setTimeout(function(){ e.target.classList.add('visible'); }, i * 65);
+  });
+},{ threshold: 0.08 });
+reveals.forEach(function(el){ obs.observe(el); });
+</script>
+
+</body>
+</html>
